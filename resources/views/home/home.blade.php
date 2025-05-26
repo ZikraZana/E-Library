@@ -84,9 +84,6 @@
         <form action="/logout" method="post">
             @csrf
             <button>Logout</button>
-            @if (auth()->check() && auth()->user()->role === 'admin')
-                <a href="/admin" class="btn btn-primary">Admin Dashboard</a>
-            @endif
         </form>
     </div>
 

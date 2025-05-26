@@ -98,20 +98,27 @@
             <div class="tab" id="tab-daftar">Daftar</div>
         </div>
 
-        <form id="form-login">
+        <form id="form-login" action="{{ route('login.authenticate') }}" method="POST">
+            @csrf
             <div class="input-group">
                 <label for="email-login">Email address</label>
-                <input type="email" id="email-login" placeholder="Email" required />
+                <input type="email" id="email-login" placeholder="Email" name="email" required />
             </div>
             <div class="input-group">
                 <label for="password-login">Password</label>
-                <input type="password" id="password-login" placeholder="Password" required />
+                <input type="password" id="password-login" placeholder="Password" name="password" required />
             </div>
+            @if ($errors->has('login'))
+                <div class="alert alert-danger" style="color: red; font-size: 13px;">
+                    <i>{{ $errors->first('login') }}</i>
+                </div>
+            @endif
+
             <p class="small-text">Nikmati berbagai layanan perpustakaan setelah login</p>
             <button class="button" type="submit">LOGIN SEKARANG</button>
         </form>
 
-        <form id="form-daftar" style="display: none;" action="{{ route('loginregister.index') }}" method="POST">
+        <form id="form-daftar" style="display: none;" action="{{ route('loginregister.store') }}" method="POST">
             @csrf
             <div class="input-group">
                 <label for="nama-daftar">Nama Lengkap</label>
@@ -120,7 +127,7 @@
                     <span class="invalid-feedback" role="alert" style="color: red; font-size: 13px;">
                         <i>{{ $message }}</i>
                     </span>
-                @enderror                
+                @enderror
             </div>
             <div class="input-group">
                 <label for="nomor-hp">Nomor HP</label>
@@ -129,7 +136,7 @@
                     <span class="invalid-feedback" role="alert" style="color: red; font-size: 13px;">
                         <i>{{ $message }}</i>
                     </span>
-                @enderror 
+                @enderror
             </div>
             <div class="input-group">
                 <label for="email-daftar">Email address</label>
@@ -138,7 +145,7 @@
                     <span class="invalid-feedback" role="alert" style="color: red; font-size: 13px;">
                         <i>{{ $message }}</i>
                     </span>
-                @enderror 
+                @enderror
             </div>
             <div class="input-group">
                 <label for="password-daftar">Password</label>
@@ -147,7 +154,7 @@
                     <span class="invalid-feedback" role="alert" style="color: red; font-size: 13px;">
                         <i>{{ $message }}</i>
                     </span>
-                @enderror 
+                @enderror
             </div>
             <p class="small-text">Nikmati berbagai layanan perpustakaan setelah daftar</p>
             <button class="button" type="submit">DAFTAR SEKARANG</button>

@@ -82,105 +82,105 @@
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://deepublishstore.com/wp-content/uploads/2018/01/Pengantar-Teknologi-Informasi-depan1.jpg" class="card-img-top" alt="Buku 6">
+                    <img src="https://deepublishstore.com/wp-content/uploads/2022/01/Menulis-Esai-Berbahasa-Inggris_Fuad-80gr-Convert-Depan-1200x1781.jpg" class="card-img-top" alt="Buku 7">
                     <div class="card-body">
-                        <h5 class="card-title">Pengantar Teknologi Informasi</h5>
+                        <h5 class="card-title">Menulis Esai Berbahasa Inggris Itu Mudah</h5>
                     </div>
                 </div>
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://deepublishstore.com/wp-content/uploads/2018/01/Pengantar-Teknologi-Informasi-depan1.jpg" class="card-img-top" alt="Buku 6">
+                    <img src="https://sumalaba.com/wp-content/uploads/2023/01/COVER-721x1024.jpg" class="card-img-top" alt="Buku 8">
                     <div class="card-body">
-                        <h5 class="card-title">Pengantar Teknologi Informasi</h5>
+                        <h5 class="card-title">Metode Penelitian Teknik Industri</h5>
                     </div>
                 </div>
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://deepublishstore.com/wp-content/uploads/2018/01/Pengantar-Teknologi-Informasi-depan1.jpg" class="card-img-top" alt="Buku 6">
+                    <img src="https://cdn.gramedia.com/uploads/items/Kamus_Lengkap_Kedokteran.jpg" class="card-img-top" alt="Buku 9">
                     <div class="card-body">
-                        <h5 class="card-title">Pengantar Teknologi Informasi</h5>
+                        <h5 class="card-title">Kamus Lengkap Kedokteran</h5>
                     </div>
                 </div>
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://deepublishstore.com/wp-content/uploads/2018/01/Pengantar-Teknologi-Informasi-depan1.jpg" class="card-img-top" alt="Buku 6">
+                    <img src="https://deepublishstore.com/wp-content/uploads/2018/05/Hukum-Administrasi-Negara-rev-1.0-Nuraisyah-Convert-depan1.jpg" class="card-img-top" alt="Buku 10">
                     <div class="card-body">
-                        <h5 class="card-title">Pengantar Teknologi Informasi</h5>
+                        <h5 class="card-title">Hukum Administrasi Negara</h5>
                     </div>
                 </div>
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://deepublishstore.com/wp-content/uploads/2018/01/Pengantar-Teknologi-Informasi-depan1.jpg" class="card-img-top" alt="Buku 6">
+                    <img src="https://lh3.googleusercontent.com/proxy/JCjtKhS4L-LCyNt40lMRBa07-L6TDc80cFCxQyOHhiPVyUXUMkv15t1duakn5KNOT6hgVRlYMpgTQ3KnL4SvQcRPJrAHBXYU5IMrzOI5LVl0uKkkWbQqvkHooY0yG-emmp9GRw.jpg" class="card-img-top" alt="Buku 11">
                     <div class="card-body">
-                        <h5 class="card-title">Pengantar Teknologi Informasi</h5>
+                        <h5 class="card-title">Sistem Informasi Manajemen</h5>
                     </div>
                 </div>
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://deepublishstore.com/wp-content/uploads/2018/01/Pengantar-Teknologi-Informasi-depan1.jpg" class="card-img-top" alt="Buku 6">
+                    <img src="https://penamuda.com/wp-content/uploads/2024/03/Screen-Shot-2024-03-25-at-09.59.19.jpg" class="card-img-top" alt="Buku 12">
                     <div class="card-body">
-                        <h5 class="card-title">Pengantar Teknologi Informasi</h5>
+                        <h5 class="card-title">Keamanan Sistem Informasi</h5>
                     </div>
                 </div>
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://deepublishstore.com/wp-content/uploads/2018/01/Pengantar-Teknologi-Informasi-depan1.jpg" class="card-img-top" alt="Buku 6">
+                    <img src="https://cdn.gramedia.com/uploads/items/manajemen_risiko_kvRU5dc.jpg" class="card-img-top" alt="Buku 13">
                     <div class="card-body">
-                        <h5 class="card-title">Pengantar Teknologi Informasi</h5>
+                        <h5 class="card-title">Manajemen Risiko dalam Industri</h5>
                     </div>
                 </div>
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://deepublishstore.com/wp-content/uploads/2018/01/Pengantar-Teknologi-Informasi-depan1.jpg" class="card-img-top" alt="Buku 6">
+                    <img src="https://cdn.gramedia.com/uploads/items/9789797698317_ILMU-KEDOKTER.jpg" class="card-img-top" alt="Buku 14">
                     <div class="card-body">
-                        <h5 class="card-title">Pengantar Teknologi Informasi</h5>
+                        <h5 class="card-title">Ilmu Kedokteran Forensik & Medikolegal</h5>
                     </div>
                 </div>
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://deepublishstore.com/wp-content/uploads/2018/01/Pengantar-Teknologi-Informasi-depan1.jpg" class="card-img-top" alt="Buku 6">
+                    <img src="https://cdn.undiksha.ac.id/wp-content/uploads/sites/17/2023/09/16231737/COver-Depan.jpg" class="card-img-top" alt="Buku 15">
                     <div class="card-body">
-                        <h5 class="card-title">Pengantar Teknologi Informasi</h5>
+                        <h5 class="card-title">Machine Learning</h5>
                     </div>
                 </div>
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://deepublishstore.com/wp-content/uploads/2018/01/Pengantar-Teknologi-Informasi-depan1.jpg" class="card-img-top" alt="Buku 6">
+                    <img src="https://deepublishstore.com/wp-content/uploads/2024/02/dasar-data-sains-1200x1774.jpg" class="card-img-top" alt="Buku 16">
                     <div class="card-body">
-                        <h5 class="card-title">Pengantar Teknologi Informasi</h5>
+                        <h5 class="card-title">Dasar Data Sains</h5>
                     </div>
                 </div>
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://deepublishstore.com/wp-content/uploads/2018/01/Pengantar-Teknologi-Informasi-depan1.jpg" class="card-img-top" alt="Buku 6">
+                    <img src="https://deepublishstore.com/wp-content/uploads/2022/08/p-manajemen-3.png" class="card-img-top" alt="Buku 17">
                     <div class="card-body">
-                        <h5 class="card-title">Pengantar Teknologi Informasi</h5>
+                        <h5 class="card-title">Pengantar Manajemen</h5>
                     </div>
                 </div>
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://deepublishstore.com/wp-content/uploads/2018/01/Pengantar-Teknologi-Informasi-depan1.jpg" class="card-img-top" alt="Buku 6">
+                    <img src="https://s3.amazonaws.com/assets.unprimdn.ac.id/images/library_books/59753/59753-thumb.jpg" class="card-img-top" alt="Buku 18">
                     <div class="card-body">
-                        <h5 class="card-title">Pengantar Teknologi Informasi</h5>
+                        <h5 class="card-title">Perancangan Sistem Informasi dan Aplikasinya</h5>
                     </div>
                 </div>
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://deepublishstore.com/wp-content/uploads/2018/01/Pengantar-Teknologi-Informasi-depan1.jpg" class="card-img-top" alt="Buku 6">
+                    <img src="https://cdn.gramedia.com/uploads/items/9786232185296.jpg" class="card-img-top" alt="Buku 19">
                     <div class="card-body">
-                        <h5 class="card-title">Pengantar Teknologi Informasi</h5>
+                        <h5 class="card-title">Filsafat Keadilan</h5>
                     </div>
                 </div>
             </div>

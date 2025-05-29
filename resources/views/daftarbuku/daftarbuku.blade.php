@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1350&q=80'); 
+            background-color: white;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -37,9 +37,9 @@
     </style>
 </head>
 <body>
-    <div class="container mt-0">
-        <h2><b>Daftar Buku</b></h2>
-        <div class="row">
+    <div class="container py-4">
+  <h2 class="mb-4 text-center"><b>📚 Daftar Buku</b></h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
                     <img src="https://ebooks.gramedia.com/ebook-covers/64810/image_highres/BLK_IKF2021198695.jpg" class="card-img-top" alt="Buku 2">
@@ -66,7 +66,7 @@
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://bintangpusnas.perpusnas.go.id/api/getImage/978-623-02-1674-9.jpg" class="card-img-top" alt="Buku 5">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeOf6UjXYYq1aoTEEjazojFFee62gsxUS18A&s.jpg" class="card-img-top" alt="Buku 5">
                     <div class="card-body">
                         <h5 class="card-title">Manajemen Teknik</h5>
                     </div>
@@ -114,7 +114,7 @@
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://lh3.googleusercontent.com/proxy/JCjtKhS4L-LCyNt40lMRBa07-L6TDc80cFCxQyOHhiPVyUXUMkv15t1duakn5KNOT6hgVRlYMpgTQ3KnL4SvQcRPJrAHBXYU5IMrzOI5LVl0uKkkWbQqvkHooY0yG-emmp9GRw.jpg" class="card-img-top" alt="Buku 11">
+                    <img src="https://api.penerbitsalemba.com/book/books/02-0263/images/220f0bdb-ab50-45b1-991a-baeb034137b6.jpg" class="card-img-top" alt="Buku 11">
                     <div class="card-body">
                         <h5 class="card-title">Sistem Informasi Manajemen</h5>
                     </div>
@@ -122,7 +122,7 @@
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://penamuda.com/wp-content/uploads/2024/03/Screen-Shot-2024-03-25-at-09.59.19.jpg" class="card-img-top" alt="Buku 12">
+                    <img src="https://penerbit.stekom.ac.id/public/journals/12/article_147_cover_en_US.jpg" class="card-img-top" alt="Buku 12">
                     <div class="card-body">
                         <h5 class="card-title">Keamanan Sistem Informasi</h5>
                     </div>
@@ -146,7 +146,7 @@
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://cdn.undiksha.ac.id/wp-content/uploads/sites/17/2023/09/16231737/COver-Depan.jpg" class="card-img-top" alt="Buku 15">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlf0nBqgx884AnqIXxLfb20AoWYoWucBWLzg&s.jpg" class="card-img-top" alt="Buku 15">
                     <div class="card-body">
                         <h5 class="card-title">Machine Learning</h5>
                     </div>
@@ -154,9 +154,9 @@
             </div>
             <div class="col-md-2 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://deepublishstore.com/wp-content/uploads/2024/02/dasar-data-sains-1200x1774.jpg" class="card-img-top" alt="Buku 16">
+                    <img src="https://store.penerbitwidina.com/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-11-at-14.25.39.jpeg" class="card-img-top" alt="Buku 16">
                     <div class="card-body">
-                        <h5 class="card-title">Dasar Data Sains</h5>
+                        <h5 class="card-title">Statistika Dasar</h5>
                     </div>
                 </div>
             </div>

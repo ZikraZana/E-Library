@@ -25,7 +25,7 @@ class LoginRegisterController extends Controller
             'email' => 'required|email|unique:users,email',
             'nama_lengkap' => 'required',
             'nomor_hp' => 'required|min:12',
-            'password' => 'required|min:8',
+            'new_password' => 'required|min:8',
         ], [
             'email.required' => 'Email harus diisi!',
             'email.email' => 'Email tidak valid!',
@@ -44,11 +44,18 @@ class LoginRegisterController extends Controller
                 ->with('open_register_tab', true); // ⬅️ Flag yang akan kita pakai di view
         }
 
+        if ($request->new_password != $request->confirm_password) {
+            return back()
+                ->withErrors(['confirm_password' => 'Konfirmasi password tidak sesuai!'])
+                ->withInput()
+                ->with('open_register_tab', true);
+        }
+
         User::insert([
             'email' => $request->email,
             'nama_lengkap' => $request->nama_lengkap,
             'nomor_hp' => $request->nomor_hp,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->new_password)
         ]);
 
         return redirect()->route('login');
@@ -80,9 +87,14 @@ class LoginRegisterController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+            'email_login' => ['required', 'email'],
+            'password_login' => ['required'],
+        ], [
+                'email_login.required' => 'Email harus diisi!',
+                'email_login.email' => 'Email tidak valid!',
+                'password_login.required' => 'Password harus diisi!',
+            ]
+        );
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();

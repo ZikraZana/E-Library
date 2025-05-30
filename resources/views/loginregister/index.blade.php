@@ -102,17 +102,28 @@
             @csrf
             <div class="input-group">
                 <label for="email-login">Email address</label>
-                <input type="email" id="email-login" placeholder="Email" name="email" required />
+                <input type="email" id="email-login" placeholder="Email" name="email_login" />
+                @error('email_login')
+                    <span class="invalid-feedback" role="alert" style="color: red; font-size: 13px;">
+                        <i>{{ $message }}</i>
+                    </span>
+                @enderror
             </div>
             <div class="input-group">
                 <label for="password-login">Password</label>
-                <input type="password" id="password-login" placeholder="Password" name="password" required />
+                <input type="password" id="password-login" placeholder="Password" name="password_login" />
+                @error('password_login')
+                    <span class="invalid-feedback" role="alert" style="color: red; font-size: 13px;">
+                        <i>{{ $message }}</i>
+                    </span>
+                @enderror
+                @if ($errors->has('login'))
+                    <div class="alert alert-danger" style="color: red; font-size: 13px;">
+                        <i>{{ $errors->first('login') }}</i>
+                    </div>
+                @endif
             </div>
-            @if ($errors->has('login'))
-                <div class="alert alert-danger" style="color: red; font-size: 13px;">
-                    <i>{{ $errors->first('login') }}</i>
-                </div>
-            @endif
+
 
             <p class="small-text">Nikmati berbagai layanan perpustakaan setelah login</p>
             <button class="button" type="submit">LOGIN SEKARANG</button>
@@ -130,7 +141,7 @@
                 @enderror
             </div>
             <div class="input-group">
-                <label for="nomor-hp">Nomor HP</label>
+                <label for="nomor-hp">Nomor Handphone</label>
                 <input type="number" id="nomor-hp" placeholder="08xxxxxxxxxx" name="nomor_hp" />
                 @error('nomor_hp')
                     <span class="invalid-feedback" role="alert" style="color: red; font-size: 13px;">
@@ -139,8 +150,8 @@
                 @enderror
             </div>
             <div class="input-group">
-                <label for="email-daftar">Email address</label>
-                <input type="email" id="email-daftar" placeholder="Email" name="email" />
+                <label for="email-daftar">Email</label>
+                <input type="email" id="email-daftar" placeholder="library@gmail.com" name="email" />
                 @error('email')
                     <span class="invalid-feedback" role="alert" style="color: red; font-size: 13px;">
                         <i>{{ $message }}</i>
@@ -148,9 +159,18 @@
                 @enderror
             </div>
             <div class="input-group">
-                <label for="password-daftar">Password</label>
-                <input type="password" id="password-daftar" placeholder="Password" name="password" />
-                @error('password')
+                <label for="password-daftar">New Password</label>
+                <input type="password" id="password-daftar" placeholder="Password Baru" name="new_password" />
+                @error('new_password')
+                    <span class="invalid-feedback" role="alert" style="color: red; font-size: 13px;">
+                        <i>{{ $message }}</i>
+                    </span>
+                @enderror
+            </div>
+            <div class="input-group">
+                <label for="password-daftar">Confirm Password</label>
+                <input type="password" id="password-daftar" placeholder="Konfirmasi Password" name="confirm_password" />
+                @error('confirm_password')
                     <span class="invalid-feedback" role="alert" style="color: red; font-size: 13px;">
                         <i>{{ $message }}</i>
                     </span>

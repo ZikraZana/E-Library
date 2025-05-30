@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-
-
 class LoginRegisterController extends Controller
 {
 
@@ -96,7 +94,7 @@ class LoginRegisterController extends Controller
             ]
         );
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt(['email' => $credentials['email_login'], 'password' => $credentials['password_login']])) {
             $request->session()->regenerate();
             return redirect('/home');
         }

@@ -251,7 +251,7 @@
     </div>
 
     <div class="text-center mt-4">
-      <a href="#" class="btn btn-primary">Kembali ke Beranda</a>
+      <a href="home" class="btn btn-primary">Kembali ke Beranda</a>
     </div>
   </div>
 

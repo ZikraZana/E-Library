@@ -6,6 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
+
 
 class LoginRegisterController extends Controller
 {
@@ -14,11 +17,11 @@ class LoginRegisterController extends Controller
     {
         return view('loginregister.index');
     }
-    
+
     // Proses Register
     public function store(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'email' => 'required|email|unique:users,email',
             'nama_lengkap' => 'required',
             'nomor_hp' => 'required|min:12',
@@ -34,6 +37,12 @@ class LoginRegisterController extends Controller
             'password.min' => 'Password minimal 8 karakter!',
         ]);
 
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('open_register_tab', true); // ⬅️ Flag yang akan kita pakai di view
+        }
 
         User::insert([
             'email' => $request->email,

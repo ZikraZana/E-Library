@@ -180,6 +180,10 @@
             formLogin.style.display = 'none';
             formDaftar.style.display = 'block';
         });
+
+        @if (session('open_register_tab'))
+            tabDaftar.click(); // Simulasikan klik tab daftar
+        @endif
     </script>
 
 </body>

@@ -15,9 +15,10 @@ Route::get('/daftarbuku', function () {
     return view('users.daftarbuku.index');
 })->middleware('auth');
 
-Route::resource('/loginregister', LoginRegisterController::class)->names([
-    'index' => 'login',
-])->middleware('guest');
+
+// Login Register User
+Route::get('loginregister', [LoginRegisterController::class, 'index'])->name('loginregister')->middleware('guest');
+Route::post('/loginregister', [LoginRegisterController::class, 'store'])->name('loginregister.store');
 
 Route::get('/login', [LoginRegisterController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [LoginRegisterController::class, 'login'])->name('login.authenticate');

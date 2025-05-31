@@ -59,27 +59,6 @@ class LoginRegisterController extends Controller
         return redirect()->route('login');
     }
 
-    public function show(string $id)
-    {
-        //
-    }
-
-    public function edit(string $id)
-    {
-        //
-    }
-
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    public function destroy(string $id)
-    {
-        //
-    }
-
-
 
     // Proses Login
     public function login(Request $request)

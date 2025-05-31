@@ -13,7 +13,7 @@ class LoginRegisterController extends Controller
 
     public function index()
     {
-        return view('loginregister.index');
+        return view('users.loginregister.index');
     }
 
     // Proses Register

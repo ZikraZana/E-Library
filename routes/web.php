@@ -8,11 +8,11 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return view('home.home');
+    return view('users.home.index');
 });
 
 Route::get('/daftarbuku', function () {
-    return view('daftarbuku.daftarbuku');
+    return view('users.daftarbuku.index');
 })->middleware('auth');
 
 Route::resource('/loginregister', LoginRegisterController::class)->names([

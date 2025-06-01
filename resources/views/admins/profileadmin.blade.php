@@ -6,7 +6,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <title>Profil Admin</title>
     <style>
-        /* Custom CSS */
+        
     .header-banner {
     height: 150px;
     font-family: Arial, sans-serif;
@@ -190,7 +190,7 @@
   </div>
 
       <div class="container text-center mt-5">
-    <!-- Foto dan Nama -->
+    
     <img src="https://cdn.antaranews.com/cache/1200x800/2022/03/17/IMG_20220317_101822_292.jpg" class="profile-picture shadow" alt="Profile Picture">
     <h4 class="mt-2 mb-0 fw-bold">Gita Mahesya<span class="badge-pro">Adm</span></h3>
 
@@ -203,7 +203,7 @@
     <div class="container mt-5">
   <div class="row justify-content-center">
     
-    <!-- Card Mengelola Peminjaman -->
+    
     <div class="col-md-5 mb-4">
       <div class="card shadow-sm rounded-4">
         <div class="card-body text-center">
@@ -214,7 +214,7 @@
       </div>
     </div>
 
-    <!-- Card Mengelola E-Library -->
+    
     <div class="col-md-5 mb-4">
       <div class="card shadow-sm rounded-4">
         <div class="card-body text-center">
@@ -225,12 +225,12 @@
       </div>
     </div>
 
-    <!-- Daftar Buku di Perpustakaan -->
+    
 <div class="container mt-5">
   <h4 class="text-center mb-4">📘 Daftar Buku di Perpustakaan</h4>
   <div class="list-group">
 
-    <!-- Buku 1 -->
+    
     <div class="list-group-item list-group-item-action d-flex align-items-start">
       <img src="https://ebooks.gramedia.com/ebook-covers/62925/image_highres/BLK_BIASRKYE2021802223.jpg" alt="Sampul Buku" class="img-thumbnail me-3" style="width: 80px; height: 100px; object-fit: cover;">
       <div>
@@ -241,7 +241,7 @@
       </div>
     </div>
 
-    <!-- Buku 2 -->
+    
     <div class="list-group-item list-group-item-action d-flex align-items-start mt-3">
       <img src="https://ebooks.gramedia.com/ebook-covers/101102/image_highres/BLK_PIK1743140052515.jpg" alt="Sampul Buku" class="img-thumbnail me-3" style="width: 80px; height: 100px; object-fit: cover;">
       <div>
@@ -252,7 +252,7 @@
       </div>
     </div>
 
-    <!-- Buku 3 -->
+    
     <div class="list-group-item list-group-item-action d-flex align-items-start mt-3">
       <img src="https://ebooks.gramedia.com/ebook-covers/100402/image_highres/BLK_M1741339034472.jpg" alt="Sampul Buku" class="img-thumbnail me-3" style="width: 80px; height: 100px; object-fit: cover;">
       <div>

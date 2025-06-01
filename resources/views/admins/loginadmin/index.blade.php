@@ -97,30 +97,17 @@
             <div class="tab active" id="tab-login">Login</div>
         </div>
 
-        <form id="form-login" action="" method="POST">
+        <form id="form-login" action="{{route('admin.login.post')}}" method="POST">
             @csrf
             <div class="input-group">
                 <label for="email-login">Email address</label>
-                <input type="email" id="email-login" placeholder="Email" name="email_login" />
-                @error('email_login')
-                    <span class="invalid-feedback" role="alert" style="color: red; font-size: 13px;">
-                        <i>{{ $message }}</i>
-                    </span>
-                @enderror
+                <input type="email" id="email-login" placeholder="Email" name="email" />
+                
             </div>
             <div class="input-group">
                 <label for="password-login">Password</label>
-                <input type="password" id="password-login" placeholder="Password" name="password_login" />
-                @error('password_login')
-                    <span class="invalid-feedback" role="alert" style="color: red; font-size: 13px;">
-                        <i>{{ $message }}</i>
-                    </span>
-                @enderror
-                @if ($errors->has('login'))
-                    <div class="alert alert-danger" style="color: red; font-size: 13px;">
-                        <i>{{ $errors->first('login') }}</i>
-                    </div>
-                @endif
+                <input type="password" id="password-login" placeholder="Password" name="password" />
+                
             </div>
 
 

@@ -56,7 +56,7 @@ class LoginRegisterController extends Controller
             'password' => Hash::make($request->new_password)
         ]);
 
-        return redirect()->route('login');
+        return redirect()->route('loginregister');
     }
 
 

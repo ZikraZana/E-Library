@@ -6,7 +6,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <title>Profil Pengguna</title>
     <style>
-        /* Custom CSS */
+        
     .header-banner {
     height: 150px;
     font-family: Arial, sans-serif;
@@ -190,7 +190,7 @@
   </div>
 
       <div class="container text-center mt-5">
-    <!-- Foto dan Nama -->
+    
     <img src="https://www.asianjunkie.com/wp-content/uploads/2019/10/AhnYujinProduce48.jpg" class="profile-picture shadow" alt="Profile Picture">
     <h4 class="mt-2 mb-0 fw-bold">Verena Louise<span class="badge-pro">PRO</span></h3>
 

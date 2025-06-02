@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Login</title>
+    <title>Login Admin</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,13 +39,13 @@
             cursor: pointer;
             border-bottom: 2px solid transparent;
             font-weight: bold;
-            color: #007bff;
+            color: #dc3545;
             user-select: none;
         }
 
         .tab.active {
-            border-bottom: 2px solid #007bff;
-            color: #0056b3;
+            border-bottom: 2px solid #dc3545;
+            color: #a71d2a;
         }
 
         form {
@@ -70,7 +70,7 @@
         }
 
         .button {
-            background-color: #1273ed;
+            background-color: #dc3545;
             color: white;
             padding: 10px;
             border: none;
@@ -83,7 +83,7 @@
         .small-text {
             font-size: 12px;
             margin-top: 10px;
-            color: #1273ed;
+            color: #dc3545;
             text-align: center;
         }
     </style>
@@ -92,29 +92,72 @@
 <body>
 
     <div class="container">
-        <h4>Kamu belum login wahai admin</h4>
+        <h4>Login Sebagai Admin</h4>
         <div class="tabs">
             <div class="tab active" id="tab-login">Login</div>
+            <div class="tab" id="tab-daftar">Daftar</div>
         </div>
 
-        <form id="form-login" action="{{route('admin.login.post')}}" method="POST">
+        <form id="form-login" action="{{ route('admin.login.post') }}" method="POST">
             @csrf
             <div class="input-group">
-                <label for="email-login">Email address</label>
-                <input type="email" id="email-login" placeholder="Email" name="email" />
-                
+                <label for="email-login">Email</label>
+                <input type="email" id="email-login" placeholder="admin@email.com" name="email" required />
             </div>
             <div class="input-group">
                 <label for="password-login">Password</label>
-                <input type="password" id="password-login" placeholder="Password" name="password" />
-                
+                <input type="password" id="password-login" placeholder="Password" name="password" required />
             </div>
+            <p class="small-text">Hanya untuk akses admin</p>
+            <button class="button" type="submit">LOGIN ADMIN</button>
+        </form>
 
-
-            <p class="small-text">Nikmati berbagai layanan perpustakaan setelah login</p>
-            <button class="button" type="submit">LOGIN SEKARANG</button>
+        <form id="form-daftar" style="display: none;">
+            <div class="input-group">
+                <label for="nama-daftar">Nama Lengkap</label>
+                <input type="text" id="nama-daftar" placeholder="Nama lengkap" required />
+            </div>
+            <div class="input-group">
+                <label for="email-daftar">Email</label>
+                <input type="email" id="email-daftar" placeholder="admin@email.com" required />
+            </div>
+            <div class="input-group">
+                <label for="password-daftar">Password</label>
+                <input type="password" id="password-daftar" placeholder="Password" required />
+            </div>
+            <div class="input-group">
+                <label for="new-password">New Password</label>
+                <input type="password" id="new-password" placeholder="Password Baru" required />
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Konfirmasi Password" required />
+            </div>
+            <p class="small-text">Daftar hanya untuk admin resmi</p>
+            <button class="button" type="submit">DAFTAR ADMIN</button>
         </form>
     </div>
+
+    <script>
+        const tabLogin = document.getElementById('tab-login');
+        const tabDaftar = document.getElementById('tab-daftar');
+        const formLogin = document.getElementById('form-login');
+        const formDaftar = document.getElementById('form-daftar');
+
+        tabLogin.addEventListener('click', () => {
+            tabLogin.classList.add('active');
+            tabDaftar.classList.remove('active');
+            formLogin.style.display = 'block';
+            formDaftar.style.display = 'none';
+        });
+
+        tabDaftar.addEventListener('click', () => {
+            tabDaftar.classList.add('active');
+            tabLogin.classList.remove('active');
+            formLogin.style.display = 'none';
+            formDaftar.style.display = 'block';
+        });
+    </script>
 
 </body>
 

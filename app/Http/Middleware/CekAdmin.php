@@ -17,7 +17,7 @@ class CekAdmin
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::guard('admin')->check()) {
-            abort(403, 'Jangan kesini wahai member!');
+            abort(403, 'Akses Ditolak!');
         }
 
         return $next($request);

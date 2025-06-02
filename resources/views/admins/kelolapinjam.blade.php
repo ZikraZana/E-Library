@@ -14,7 +14,7 @@
       <a href="profileadmin.html" class="btn btn-secondary">Kembali ke Profile</a>
     </div>
 
-    <!-- Form Tambah Peminjaman -->
+    //Form Tambah Peminjaman
     <div class="card mb-4">
       <div class="card-body">
         <h5 class="card-title">Tambah Peminjaman</h5>
@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <!-- Tabel Peminjaman -->
+    //Tabel Peminjaman
     <table class="table table-bordered table-striped">
       <thead class="table-primary">
         <tr>

@@ -82,12 +82,15 @@
 <body>
 
     <div style="position: absolute; top: 20px; right: 20px;">
-    <a href="login.html" class="text-light d-flex align-items-center login-link">
-        <span class="mr-1">👤</span> Login</a>
-        <form action="/logout" method="post">
-            @csrf
-            <button>Logout</button>
-        </form>
+    <div class="dropdown" style="position: absolute; top: 20px; right: 20px;">
+  <button class="btn btn-light dropdown-toggle" type="button" id="dropdownLogin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    👤 Login
+  </button>
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownLogin">
+    <a class="dropdown-item" href="login.html">Login sebagai User</a>
+    <a class="dropdown-item" href="login_admin.html">Login sebagai Admin</a>
+  </div>
+</div>
     </div>
 
     <div class="header text-center">

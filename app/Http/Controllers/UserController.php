@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class LoginRegisterController extends Controller
+class UserController extends Controller
 {
-
     public function index()
     {
         return view('users.loginregister.index');
@@ -63,10 +63,12 @@ class LoginRegisterController extends Controller
     // Proses Login
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email_login' => ['required', 'email'],
-            'password_login' => ['required'],
-        ], [
+        $credentials = $request->validate(
+            [
+                'email_login' => ['required', 'email'],
+                'password_login' => ['required'],
+            ],
+            [
                 'email_login.required' => 'Email harus diisi!',
                 'email_login.email' => 'Email tidak valid!',
                 'password_login.required' => 'Password harus diisi!',
@@ -90,5 +92,28 @@ class LoginRegisterController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/loginregister');
+    }
+
+
+    // Edit Profile
+    public function updateProfile(Request $request, $id){
+
+        $request->validate([
+            'nama_lengkap' => 'required',
+            'nomor_hp' => 'required|min:12',
+        ], [
+            'nama_lengkap.required' => 'Nama lengkap harus diisi!',
+            'nomor_hp.required' => 'Nomor HP harus diisi!',
+            'nomor_hp.min' => 'Nomor HP minimal 12 karakter!',
+        ]);
+
+        
+
+        User::find($id)->update([
+            'nama_lengkap' => $request->nama_lengkap,
+            'nomor_hp' => $request->nomor_hp,
+        ]);
+
+        return redirect('/profileuser');
     }
 }

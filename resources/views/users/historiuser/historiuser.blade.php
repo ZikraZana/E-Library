@@ -154,7 +154,7 @@
     </table>
   </div>
 
-   <a href="beranda.html" class="back-button">Kembali ke Beranda</a>
+   <a href="/home" class="back-button">Kembali ke Beranda</a>
 
 
   <script>

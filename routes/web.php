@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginRegisterController;
-
-
+use App\Http\Controllers\UserController;
 
 //================ AREA USER GUEST & ADMIN ================//
 Route::get('/', function () {
@@ -20,13 +19,13 @@ Route::get('/daftarbuku', function () {
 //================ AREA GUEST ================//
 
 // Login Register User
-Route::get('loginregister', [LoginRegisterController::class, 'index'])->name('loginregister')->middleware('guest');
-Route::post('/loginregister', [LoginRegisterController::class, 'store'])->name('loginregister.store');
-Route::get('/login', [LoginRegisterController::class, 'index'])->name('login');
-Route::post('/login', [LoginRegisterController::class, 'login'])->name('login.authenticate');
+Route::get('loginregister', [UserController::class, 'index'])->name('loginregister')->middleware('guest');
+Route::post('/loginregister', [UserController::class, 'store'])->name('loginregister.store');
+Route::get('/login', [UserController::class, 'index'])->name('login');
+Route::post('/login', [UserController::class, 'login'])->name('login.authenticate');
 
 // Logout User
-Route::post('/logout', [LoginRegisterController::class, 'logout'])->name('logout')->middleware('auth');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
 
 
 
@@ -49,6 +48,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profileuser', function () {
         return view('users.profileuser.profileuser');
     });
+
+    
+    // Proses Edit Profile User
+    Route::put('/profileuser/{id}', [UserController::class, 'updateProfile'])->name('profileuser.update');
 
 });
 

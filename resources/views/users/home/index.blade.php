@@ -104,6 +104,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownLogin">
                     <a class="dropdown-item" href="/profileuser">Profil</a>
+                    <a class="dropdown-item" href="/historiuser">Riwayat Peminjaman</a>
                     <form action="/logout" method="POST">
                         @csrf
                         <button type="submit" class="btn dropdown-item text-danger">Logout</button>
@@ -169,7 +170,10 @@
             </div>
         </div>
 
-        <h4 class="mt-4">Rekomendasi</h4>
+        <div class="d-flex justify-content-between align-items-center">
+            <h4 class="mt-4">Rekomendasi</h4>
+            <a href="/daftarbuku" class="mt-3" style="text-decoration: underline !important;">Lihat Semua</a>
+        </div>
         <div class="row">
 
             <div class="col">
@@ -285,7 +289,6 @@
                 modalImg.src = imgSrc;
             });
         </script>
-        <button class="btn btn-link mt-3">Lihat Semua</button>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -212,11 +212,11 @@
 
             <img src="https://www.asianjunkie.com/wp-content/uploads/2019/10/AhnYujinProduce48.jpg"
                 class="profile-picture shadow" alt="Profile Picture">
-            <h4 class="mt-2 mb-0 fw-bold">Verena Louise<span class="badge-pro">PRO</span></h3>
+            <h4 class="mt-2 mb-0 fw-bold">{{Auth::user()->nama_lengkap}}<span class="badge-pro">PRO</span></h3>
 
                 <i class="bi bi-pencil-square ms-2 text-muted" style="cursor:pointer;" title="Edit"></i>
             </h4>
-            <p class="text-muted">ahnyujean@gmail.com</p>
+            <p class="text-muted">{{Auth::user()->email}}</p>
         </div>
         <div class="d-flex justify-content-end mb-3">
 

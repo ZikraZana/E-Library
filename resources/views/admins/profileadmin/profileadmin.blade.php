@@ -212,11 +212,12 @@
 
             <img src="https://cdn.antaranews.com/cache/1200x800/2022/03/17/IMG_20220317_101822_292.jpg"
                 class="profile-picture shadow" alt="Profile Picture">
-            <h4 class="mt-2 mb-0 fw-bold">Gita Mahesya<span class="badge-pro">Adm</span></h3>
+            <h4 class="mt-2 mb-0 fw-bold">{{ Auth::guard('admin')->user()->name }}<span class="badge-pro">Adm</span>
+                </h3>
 
                 <i class="bi bi-pencil-square ms-2 text-muted" style="cursor:pointer;" title="Edit"></i>
             </h4>
-            <p class="text-muted">autumn@gmail.com</p>
+            <p class="text-muted">{{ Auth::guard('admin')->user()->email }}</p>
         </div>
         <div class="d-flex justify-content-end mb-3">
 
@@ -229,7 +230,7 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title">Kelola Peminjaman Buku</h5>
                                 <p class="card-text">Pantau dan atur proses peminjaman buku oleh pengguna.</p>
-                                <a href="kelola-peminjaman.html" class="btn btn-primary">Lihat Detail</a>
+                                <a href="/admin/kelolapinjam" class="btn btn-primary">Lihat Detail</a>
                             </div>
                         </div>
                     </div>
@@ -240,7 +241,7 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title">Kelola Daftar Buku</h5>
                                 <p class="card-text">Tambahkan, ubah, atau hapus koleksi buku pada e-library.</p>
-                                <a href="kelola-elibrary.html" class="btn btn-success">Lihat Detail</a>
+                                <a href="/admin/kelolabuku" class="btn btn-success">Lihat Detail</a>
                             </div>
                         </div>
                     </div>

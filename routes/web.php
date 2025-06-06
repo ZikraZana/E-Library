@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/peminjaman', function () {
         return view('users.peminjaman.peminjaman');
-    });
+    })->name('peminjaman');
 
     Route::get('/pengembalian', function () {
         return view('users.pengembalian.pengembalian');
@@ -73,6 +73,10 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('/admin/detailpeminjaman', function () {
         return view('admins.daftarpeminjaman.detailpeminjaman');
+    });
+
+    Route::get('/admin/kelolapinjam', function () {
+        return view('admins.kelolapinjam.kelolapinjam');
     });
 
     Route::get('/admin/kelolabuku', function () {

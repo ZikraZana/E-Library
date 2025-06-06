@@ -68,7 +68,7 @@
     </div>
 
     <div class="button-container">
-      <a href="daftar-peminjaman.html" class="btn-kembali">&larr; Kembali ke Daftar Peminjaman</a>
+      <a href="/admin/daftarpeminjaman" class="btn-kembali">&larr; Kembali ke Daftar Peminjaman</a>
     </div>
   </div>
 

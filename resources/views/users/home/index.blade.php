@@ -259,7 +259,9 @@
                     </div>
                     <div class="modal-footer justify-content-center">
                         <button class="btn btn-outline-primary">❤️ Tambah ke Wishlist</button>
-                        <button class="btn btn-success">📚 Pinjam Sekarang</button>
+                        <form action="{{ route('peminjaman') }}" method="GET">
+                            <button class="btn btn-success">📚 Pinjam Sekarang</button>
+                        </form>
                     </div>
                 </div>
             </div>

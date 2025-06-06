@@ -83,8 +83,8 @@
   <div class="form-container">
     <h2>📚 Form Peminjaman Buku</h2>
     <form>
-      <label for="nama">Nama Peminjam</label>
-      <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" required>
+      <label>Nama Peminjam</label>
+      <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" value="{{Auth::user()->nama_lengkap}}" readonly>
 
       <label for="tanggalPinjam">Tanggal Peminjaman</label>
       <input type="date" id="tanggalPinjam" name="tanggalPinjam" required>

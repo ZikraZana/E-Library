@@ -91,7 +91,7 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/loginregister');
+        return redirect('/home');
     }
 
 

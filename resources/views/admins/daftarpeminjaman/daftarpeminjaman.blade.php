@@ -1,6 +1,13 @@
 @extends('admins.layouts.layout')
 
 @section('content')
+<div style="margin: 10px 0 20px 20px;">
+    <a href="/admin" style="text-decoration: none;">
+        <button style="background-color: white; color: #007bff; font-size: 18px; border: none; border-radius: 5px; cursor: pointer;">
+            <h3>←</h3>
+        </button>
+    </a>
+</div>
     <div class="container">
         <h2 class="text-center mb-5">📚 Riwayat Peminjaman Buku</h2>
 

@@ -161,10 +161,10 @@
                     Lainnya
                 </button>
                 <div class="dropdown-menu" aria-labelledby="lainnyaDropdown">
-                    <a class="dropdown-item" href="#">Agama</a>
+                    <a class="dropdown-item" href="#">Novel</a>
                     <a class="dropdown-item" href="#">Psikologi</a>
                     <a class="dropdown-item" href="#">Teknik</a>
-                    <a class="dropdown-item" href="#">Filsafat</a>
+                    <a class="dropdown-item" href="#">Informatika</a>
                     <a class="dropdown-item" href="#">Pendidikan</a>
                 </div>
             </div>

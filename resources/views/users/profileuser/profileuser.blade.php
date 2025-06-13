@@ -186,6 +186,13 @@
 
     <body>
         <div class="header-banner">
+            <div style="margin-top: 20px 20px; margin-left: 20px;">
+                <a href="/admin" style="text-decoration: none;">
+                <button style="background-color: white; color: #007bff; font-size: 18px; border: none; border-radius: 5px; cursor: pointer;">
+                    <h3>←</h3>
+                </button>
+                </a>
+            </div>
             <div class="settings-dropdown dropdown">
                 <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">

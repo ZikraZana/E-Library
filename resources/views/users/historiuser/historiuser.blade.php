@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Riwayat Buku</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,7 +14,7 @@
       background-position: center;
       background-repeat: no-repeat;
       margin: 0;
-      padding: 20px;
+      padding: 50px;
     }
 
     h2 {
@@ -93,7 +96,19 @@
 </head>
 <body>
 
-  <h2>📚 Riwayat Buku</h2>
+  <div class="container">
+    <div class="row align-items-center mb-4">
+        <div class="col-auto">
+            <a href="/home" style="text-decoration: none;">
+                <button style="background-color: white; color: #007bff; font-size: 24px; border: none; border-radius: 5px; cursor: pointer;">
+                    ←
+                </button>
+            </a>
+        </div>
+
+        <div class="col text-center">
+            <h2 class="fw-bold mb-0">📚 Riwayat Buku</h2>
+        </div>
 
   <div class="tabs">
     <div class="tab active" id="tab-peminjaman">Peminjaman</div>
@@ -154,7 +169,7 @@
     </table>
   </div>
 
-   <a href="/home" class="back-button">Kembali ke Beranda</a>
+
 
 
   <script>

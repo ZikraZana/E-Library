@@ -47,7 +47,19 @@
 <body>
 
   <div class="container">
-    <h2 class="text-center fw-bold mb-4">📚 Daftar Buku</h2>
+    <div class="row align-items-center mb-4">
+        <div class="col-auto">
+            <a href="/home" style="text-decoration: none;">
+                <button style="background-color: white; color: #007bff; font-size: 24px; border: none; border-radius: 5px; cursor: pointer;">
+                    ←
+                </button>
+            </a>
+        </div>
+
+        <div class="col text-center">
+            <h2 class="fw-bold mb-0">📚 Daftar Buku</h2>
+        </div>
+    
     <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
 
       <div class="col">
@@ -250,10 +262,7 @@
 
     </div>
 
-    <div class="text-center mt-4">
-      <a href="home" class="btn btn-primary">Kembali ke Beranda</a>
-    </div>
-  </div>
+
 
   <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

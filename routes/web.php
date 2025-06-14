@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KelolaPenggunaController;
 
 //================ AREA USER GUEST & ADMIN ================//
 Route::get('/', function () {
@@ -90,7 +91,5 @@ Route::middleware(['admin'])->group(function () {
         return view('admins.profileadmin.profileadmin');
     });
 
-    Route::get('/admin/kelolapengguna', function () {
-        return view('admins.kelolapengguna.kelolapengguna');
-    });
+    Route::get('/admin/kelolapengguna', [KelolaPenggunaController::class, 'index'])->name('kelolapengguna.index');
 });

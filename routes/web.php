@@ -89,4 +89,8 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/profileadmin', function () {
         return view('admins.profileadmin.profileadmin');
     });
+
+    Route::get('/admin/kelolapengguna', function () {
+        return view('admins.kelolapengguna.kelolapengguna');
+    });
 });

@@ -18,7 +18,7 @@
             <button class="btn btn-primary mt-2" id="btnTambah">Tambah Pengguna</button>
           </div>
         </div>
-      </div>
+      </div> 
     </div>
 
     <!-- Tabel Peminjaman -->

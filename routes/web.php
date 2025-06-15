@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DaftarBukuController;
+use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KelolaPenggunaController;
@@ -72,17 +73,9 @@ Route::middleware(['admin'])->group(function () {
         return view('admins.dashboard.homeadmin');
     });
 
-    Route::get('/admin/daftarpeminjaman', function () {
-        return view('admins.daftarpeminjaman.daftarpeminjaman');
-    });
+    Route::resource('/admin/kelolapinjam', PeminjamanController::class);
 
-    Route::get('/admin/detailpeminjaman', function () {
-        return view('admins.daftarpeminjaman.detailpeminjaman');
-    });
-
-    Route::get('/admin/kelolapinjam', function () {
-        return view('admins.kelolapinjam.kelolapinjam');
-    });
+    //Route::get('/admin/kelolapinjam', [PeminjamanController::class, 'index'])->name('peminjaman.index');
 
     //Route::get('/admin/kelolabuku', [DaftarBukuController::class, 'index'])->name('kelolabuku.index');
     //Route::post('/admin/kelolabuku', [DaftarBukuController::class, 'store'])->name('kelolabuku.store');

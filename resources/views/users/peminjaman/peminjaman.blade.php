@@ -94,7 +94,7 @@
 
       <button type="submit">Konfirmasi Peminjaman</button>
     </form>
-    <a href="index.html" class="back-link">← Kembali ke Daftar Buku</a>
+    <a href="/daftarbuku" class="back-link">← Kembali ke Daftar Buku</a>
   </div>
 
 </body>

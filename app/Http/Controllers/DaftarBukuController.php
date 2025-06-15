@@ -34,7 +34,7 @@ class DaftarBukuController extends Controller
         ]);
 
         // Simpan file cover
-        $coverPath = $request->file('cover_buku')->store('covers', 'public');
+        $coverPath = $request->file('cover_buku')->store('cover_buku', 'public');
 
         DaftarBuku::create([
             'no_katalog' => $request->no_katalog,
@@ -83,7 +83,7 @@ class DaftarBukuController extends Controller
         ]);
 
         if ($request->hasFile('cover_buku')) {
-            $data['cover_buku'] = $request->file('cover_buku')->store('covers', 'public');
+            $data['cover_buku'] = $request->file('cover_buku')->store('cover_buku', 'public');
         }
 
         $buku->update($data);

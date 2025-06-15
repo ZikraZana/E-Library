@@ -12,12 +12,8 @@ use App\Http\Controllers\KelolaPenggunaController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', function () {
-    return view('users.home.index');
-});
-Route::get('/daftarbuku', function () {
-    return view('users.daftarbuku.index');
-});
+Route::get('/daftarbuku', [DaftarBukuController::class, 'tampilDataBukuDaftarBuku'] )->name('tampilDataBukuDaftarBuku');
+Route::get('/home', [DaftarBukuController::class, 'tampilDataBukuHome'] )->name('tampilDataBukuHome');
 
 //================ AREA GUEST ================//
 
@@ -51,11 +47,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profileuser', function () {
         return view('users.profileuser.profileuser');
     });
-    
-    
+
+
     // Proses Edit Profile User
     Route::put('/profileuser/{id}', [UserController::class, 'updateProfile'])->name('profileuser.update');
-
 });
 
 
@@ -81,7 +76,10 @@ Route::middleware(['admin'])->group(function () {
     //Route::post('/admin/kelolabuku', [DaftarBukuController::class, 'store'])->name('kelolabuku.store');
 
     Route::prefix('admin')->as('admins.')->group(function () {
-    Route::resource('kelolabuku', DaftarBukuController::class);
+        Route::get('/kelolabuku', [DaftarBukuController::class, 'index'])->name('kelolabuku.index');
+        Route::post('/kelolabuku', [DaftarBukuController::class, 'store'])->name('kelolabuku.store');
+        Route::put('/kelolabuku/{id}', [DaftarBukuController::class, 'update'])->name('kelolabuku.update');
+        Route::delete('/kelolabuku/{id}', [DaftarBukuController::class, 'destroy'])->name('kelolabuku.destroy');
     });
 
 

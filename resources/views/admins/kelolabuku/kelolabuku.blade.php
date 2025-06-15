@@ -32,30 +32,66 @@
                         <div class="mb-3">
                             <label>No Katalog</label>
                             <input type="text" name="no_katalog" class="form-control" required>
+                            @error('no_katalog')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label>Judul Buku</label>
                             <input type="text" name="judul_buku" class="form-control" required>
+                            @error('judul_buku')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label>Penulis</label>
                             <input type="text" name="penulis" class="form-control" required>
+                            @error('penulis')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label>Penerbit</label>
                             <input type="text" name="penerbit" class="form-control" required>
+                            @error('penerbit')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label>Kategori</label>
-                            <input type="text" name="kategori" class="form-control" required>
+                            <select class="form-select" aria-label="Default select example" name="kategori">
+                                <option selected disabled value="">Open this select menu</option>
+                                <option value="Informatika">Informatika</option>
+                                <option value="Sejarah">Sejarah</option>
+                                <option value="Ilmiah">Ilmiah</option>
+                                <option value="Kedokteran">Kedokteran</option>
+                                <option value="Hukum">Hukum</option>
+                                <option value="Manajemen">Manajemen</option>
+                                <option value="Sains">Sains</option>
+                                <option value="Politik">Politik</option>
+                                <option value="Sastra">Sastra</option>
+                                <option value="Novel">Novel</option>
+                                <option value="Psikologi">Psikologi</option>
+                                <option value="Teknik">Teknik</option>
+                                <option value="Pendidikan">Pendidikan</option>
+                            </select>
+                            @error('kategori')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label>Jumlah Buku</label>
                             <input type="number" name="jumlah_buku" class="form-control" required>
+                            @error('jumlah_buku')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label>Cover Buku</label>
                             <input type="file" name="cover_buku" class="form-control" required>
+                            @error('cover_buku')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -91,11 +127,11 @@
                                 <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#modaledit{{ $item->id }}">Edit</button>
                                 <!-- Modal -->
-                                <div class="modal fade" id="modaledit{{ $item->id }}" tabindex="-1" aria-labelledby="modalTambahBukuLabel"
-                                    aria-hidden="true">
+                                <div class="modal fade" id="modaledit{{ $item->id }}" tabindex="-1"
+                                    aria-labelledby="modalTambahBukuLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <form id="formBuku" action="{{ route('admins.kelolabuku.update', $item->id) }}" method="POST"
-                                            enctype="multipart/form-data" class="modal-content">
+                                        <form id="formBuku" action="{{ route('admins.kelolabuku.update', $item->id) }}"
+                                            method="POST" enctype="multipart/form-data" class="modal-content">
                                             @csrf
                                             @method('PUT')
                                             <div class="modal-header">
@@ -107,31 +143,100 @@
                                                 <!-- Semua inputanmu -->
                                                 <div class="mb-3">
                                                     <label>No Katalog</label>
-                                                    <input type="text" name="no_katalog" class="form-control" value="{{ $item->no_katalog }}" required>
+                                                    <input type="text" name="no_katalog" class="form-control"
+                                                        value="{{ $item->no_katalog }}" required>
+                                                    @error('no_katalog')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Judul Buku</label>
-                                                    <input type="text" name="judul_buku" class="form-control" value="{{ $item->judul_buku }}" required>
+                                                    <input type="text" name="judul_buku" class="form-control"
+                                                        value="{{ $item->judul_buku }}" required>
+                                                    @error('judul_buku')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Penulis</label>
-                                                    <input type="text" name="penulis" class="form-control" value="{{ $item->penulis }}" required>
+                                                    <input type="text" name="penulis" class="form-control"
+                                                        value="{{ $item->penulis }}" required>
+                                                    @error('penulis')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Penerbit</label>
-                                                    <input type="text" name="penerbit" class="form-control" value="{{ $item->penerbit }}" required>
+                                                    <input type="text" name="penerbit" class="form-control"
+                                                        value="{{ $item->penerbit }}" required>
+                                                    @error('penerbit')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Kategori</label>
-                                                    <input type="text" name="kategori" class="form-control" value="{{ $item->kategori }}" required>
+                                                    <select class="form-select" aria-label="Default select example"
+                                                        name="kategori">
+                                                        <option disabled value="">Open this select menu</option>
+                                                        <option value="Informatika"
+                                                            {{ $item->kategori == 'Informatika' ? 'selected' : '' }}>
+                                                            Informatika</option>
+                                                        <option value="Sejarah"
+                                                            {{ $item->kategori == 'Sejarah' ? 'selected' : '' }}>Sejarah
+                                                        </option>
+                                                        <option value="Ilmiah"
+                                                            {{ $item->kategori == 'Ilmiah' ? 'selected' : '' }}>Ilmiah
+                                                        </option>
+                                                        <option value="Kedokteran"
+                                                            {{ $item->kategori == 'Kedokteran' ? 'selected' : '' }}>
+                                                            Kedokteran</option>
+                                                        <option value="Hukum"
+                                                            {{ $item->kategori == 'Hukum' ? 'selected' : '' }}>Hukum
+                                                        </option>
+                                                        <option value="Manajemen"
+                                                            {{ $item->kategori == 'Manajemen' ? 'selected' : '' }}>
+                                                            Manajemen</option>
+                                                        <option value="Sains"
+                                                            {{ $item->kategori == 'Sains' ? 'selected' : '' }}>Sains
+                                                        </option>
+                                                        <option value="Politik"
+                                                            {{ $item->kategori == 'Politik' ? 'selected' : '' }}>Politik
+                                                        </option>
+                                                        <option value="Sastra"
+                                                            {{ $item->kategori == 'Sastra' ? 'selected' : '' }}>Sastra
+                                                        </option>
+                                                        <option value="Novel"
+                                                            {{ $item->kategori == 'Novel' ? 'selected' : '' }}>Novel
+                                                        </option>
+                                                        <option value="Psikologi"
+                                                            {{ $item->kategori == 'Psikologi' ? 'selected' : '' }}>
+                                                            Psikologi</option>
+                                                        <option value="Teknik"
+                                                            {{ $item->kategori == 'Teknik' ? 'selected' : '' }}>Teknik
+                                                        </option>
+                                                        <option value="Pendidikan"
+                                                            {{ $item->kategori == 'Pendidikan' ? 'selected' : '' }}>
+                                                            Pendidikan</option>
+                                                    </select>
+                                                    @error('kategori')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Jumlah Buku</label>
-                                                    <input type="number" name="jumlah_buku" class="form-control" value="{{ $item->jumlah_buku }}" required>
+                                                    <input type="number" name="jumlah_buku" class="form-control"
+                                                        value="{{ $item->jumlah_buku }}" required>
+                                                    @error('jumlah_buku')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Cover Buku</label>
-                                                    <input type="file" name="cover_buku" class="form-control" value="{{ $item->cover_buku }}" required>
+                                                    <input type="file" name="cover_buku" class="form-control"
+                                                        value="{{ asset('storage/' . $item->cover_buku) }}">
+                                                    @error('cover_buku')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -145,11 +250,11 @@
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#modaldelete{{ $item->id }}">Hapus</button>
                                 <!-- Modal -->
-                                <div class="modal fade" id="modaldelete{{ $item->id }}" tabindex="-1" aria-labelledby="modalTambahBukuLabel"
-                                    aria-hidden="true">
+                                <div class="modal fade" id="modaldelete{{ $item->id }}" tabindex="-1"
+                                    aria-labelledby="modalTambahBukuLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <form id="formBuku" action="{{ route('admins.kelolabuku.destroy', $item->id) }}" method="POST"
-                                            enctype="multipart/form-data" class="modal-content">
+                                        <form id="formBuku" action="{{ route('admins.kelolabuku.destroy', $item->id) }}"
+                                            method="POST" enctype="multipart/form-data" class="modal-content">
                                             @csrf
                                             @method('DELETE')
                                             <div class="modal-header">

@@ -14,12 +14,6 @@ class DaftarBukuController extends Controller
         return view('admins.kelolabuku.kelolabuku', compact('buku'));
     }
 
-    // Menampilkan form tambah buku
-    public function create()
-    {
-        return view('admins.kelolabuku.create');
-    }
-
     // Menyimpan buku baru
     public function store(Request $request)
     {
@@ -31,8 +25,21 @@ class DaftarBukuController extends Controller
             'kategori' => 'required',
             'jumlah_buku' => 'required|integer',
             'cover_buku' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+        ],
+        [
+            'no_katalog.required' => 'No Katalog harus diisi.',
+            'no_katalog.unique' => 'No Katalog sudah ada.',
+            'judul_buku.required' => 'Judul Buku harus diisi.',
+            'penulis.required' => 'Penulis harus diisi.',
+            'penerbit.required' => 'Penerbit harus diisi.',
+            'kategori.required' => 'Kategori harus diisi.',
+            'jumlah_buku.required' => 'Jumlah Buku harus diisi.',
+            'jumlah_buku.integer' => 'Jumlah Buku harus berupa angka.',
+            'cover_buku.required' => 'Cover Buku harus diisi.',
+            'cover_buku.image' => 'Cover Buku harus berupa gambar.',
+            'cover_buku.mimes' => 'Cover Buku harus berupa gambar dengan format JPG, JPEG, atau PNG.',
+            'cover_buku.max' => 'Ukuran Cover Buku tidak boleh lebih dari 2MB.'
         ]);
-
         // Simpan file cover
         $coverPath = $request->file('cover_buku')->store('cover_buku', 'public');
 
@@ -47,20 +54,6 @@ class DaftarBukuController extends Controller
         ]);
 
         return redirect()->route('admins.kelolabuku.index')->with('success', 'Buku berhasil ditambahkan.');
-    }
-
-    // Menampilkan detail buku
-    public function show($id)
-    {
-        $buku = DaftarBuku::findOrFail($id);
-        return view('admins.kelolabuku.show', compact('buku'));
-    }
-
-    // Menampilkan form edit
-    public function edit($id)
-    {
-        $buku = DaftarBuku::findOrFail($id);
-        return view('admins.kelolabuku.edit', compact('buku'));
     }
 
     // Update data buku
@@ -99,4 +92,16 @@ class DaftarBukuController extends Controller
 
         return redirect()->route('admins.kelolabuku.index')->with('success', 'Buku berhasil dihapus.');
     }
+
+
+    //Menampilkan card buku untuk user dan guest
+    public function tampilDataBukuDaftarBuku(){
+        $daftarbuku = DaftarBuku::all();
+        return view('users.daftarbuku.index', compact('daftarbuku'));
+    }
+    public function tampilDataBukuHome(){
+        $daftarbuku = DaftarBuku::all();
+        return view('users.home.index', compact('daftarbuku'));
+    }
+
 }

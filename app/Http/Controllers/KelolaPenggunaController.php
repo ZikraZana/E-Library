@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KelolaPengguna;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class KelolaPenggunaController extends Controller
 {
     public function index()
     {
-        $pengguna = KelolaPengguna::all();
+        $pengguna = User::all();
         return view('admins.kelolapengguna.kelolapengguna', compact('pengguna'));
     }
 
@@ -27,14 +27,14 @@ class KelolaPenggunaController extends Controller
         ]);
 
         dd($request->all());
-        KelolaPengguna::create($request->all());
+        User::create($request->all());
 
         return redirect()->route('kelolapengguna.index')->with('success', 'Pengguna berhasil ditambahkan.');
     }
 
     public function destroy($id)
     {
-        $pengguna = KelolaPengguna::findOrFail($id);
+        $pengguna = User::findOrFail($id);
         $pengguna->delete();
 
         return redirect()->route('kelolapengguna.index')->with('success', 'Pengguna berhasil dihapus.');

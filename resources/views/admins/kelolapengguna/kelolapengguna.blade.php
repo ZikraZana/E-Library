@@ -20,9 +20,9 @@
           @foreach ($pengguna as $index => $item)
           <tr>
             <td>{{ $index + 1 }}</td>
-            <td>{{ $item->nama }}</td>
+            <td>{{ $item->nama_lengkap }}</td>
             <td>{{ $item->email }}</td>
-            <td>{{ $item->no_hp }}</td>
+            <td>{{ $item->nomor_hp }}</td>
             <td>
               <form action="{{ route('kelolapengguna.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
                   @csrf

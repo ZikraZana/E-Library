@@ -9,6 +9,8 @@ class DaftarBuku extends Model
 {
     use HasFactory;
 
+    protected $table =  'daftar_buku';
+    
     protected $fillable = [
         'no_katalog',
         'judul_buku',

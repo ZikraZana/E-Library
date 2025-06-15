@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DaftarBukuController;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KelolaPenggunaController;
@@ -49,7 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profileuser', function () {
         return view('users.profileuser.profileuser');
     });
-
+    
     
     // Proses Edit Profile User
     Route::put('/profileuser/{id}', [UserController::class, 'updateProfile'])->name('profileuser.update');
@@ -83,13 +84,18 @@ Route::middleware(['admin'])->group(function () {
         return view('admins.kelolapinjam.kelolapinjam');
     });
 
-    Route::get('/admin/kelolabuku', function () {
-        return view('admins.kelolabuku.kelolabuku');
+    //Route::get('/admin/kelolabuku', [DaftarBukuController::class, 'index'])->name('kelolabuku.index');
+    //Route::post('/admin/kelolabuku', [DaftarBukuController::class, 'store'])->name('kelolabuku.store');
+
+    Route::prefix('admin')->as('admins.')->group(function () {
+    Route::resource('kelolabuku', DaftarBukuController::class);
     });
+
 
     Route::get('/admin/profileadmin', function () {
         return view('admins.profileadmin.profileadmin');
     });
 
     Route::get('/admin/kelolapengguna', [KelolaPenggunaController::class, 'index'])->name('kelolapengguna.index');
+    Route::delete('/admin/kelolapengguna/{id}', [KelolaPenggunaController::class, 'destroy'])->name('kelolapengguna.destroy');
 });

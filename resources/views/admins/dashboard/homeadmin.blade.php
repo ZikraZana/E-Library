@@ -19,9 +19,6 @@
             <a href="/admin/kelolabuku" class="btn btn-warning w-100">📝 Kelola Buku</a>
         </div>
         <div class="col-md-4">
-            <a href="tambah-buku.html" class="btn btn-info w-100">➕ Tambah Buku Baru</a>
-        </div>
-        <div class="col-md-4">
             <a href="/admin/kelolapengguna" class="btn btn-secondary w-100">👤 Kelola Pengguna</a>
         </div>
     </div>

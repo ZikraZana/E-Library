@@ -11,13 +11,13 @@ class DaftarBukuController extends Controller
     public function index()
     {
         $buku = DaftarBuku::all();
-        return view('daftar_buku.index', compact('buku'));
+        return view('admins.kelolabuku.kelolabuku', compact('buku'));
     }
 
     // Menampilkan form tambah buku
     public function create()
     {
-        return view('daftar_buku.create');
+        return view('admins.kelolabuku.create');
     }
 
     // Menyimpan buku baru
@@ -46,21 +46,21 @@ class DaftarBukuController extends Controller
             'cover_buku' => $coverPath,
         ]);
 
-        return redirect()->route('daftar_buku.index')->with('success', 'Buku berhasil ditambahkan.');
+        return redirect()->route('admins.kelolabuku.index')->with('success', 'Buku berhasil ditambahkan.');
     }
 
     // Menampilkan detail buku
     public function show($id)
     {
         $buku = DaftarBuku::findOrFail($id);
-        return view('daftar_buku.show', compact('buku'));
+        return view('admins.kelolabuku.show', compact('buku'));
     }
 
     // Menampilkan form edit
     public function edit($id)
     {
         $buku = DaftarBuku::findOrFail($id);
-        return view('daftar_buku.edit', compact('buku'));
+        return view('admins.kelolabuku.edit', compact('buku'));
     }
 
     // Update data buku
@@ -88,7 +88,7 @@ class DaftarBukuController extends Controller
 
         $buku->update($data);
 
-        return redirect()->route('daftar_buku.index')->with('success', 'Buku berhasil diperbarui.');
+        return redirect()->route('admins.kelolabuku.index')->with('success', 'Buku berhasil diperbarui.');
     }
 
     // Menghapus buku
@@ -97,6 +97,6 @@ class DaftarBukuController extends Controller
         $buku = DaftarBuku::findOrFail($id);
         $buku->delete();
 
-        return redirect()->route('daftar_buku.index')->with('success', 'Buku berhasil dihapus.');
+        return redirect()->route('admins.kelolabuku.index')->with('success', 'Buku berhasil dihapus.');
     }
 }

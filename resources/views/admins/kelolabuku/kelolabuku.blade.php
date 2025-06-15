@@ -18,7 +18,7 @@
     <!-- Modal -->
     <div class="modal fade" id="modalTambahBuku" tabindex="-1" aria-labelledby="modalTambahBukuLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form id="formBuku" action="{{ route('kelolabuku.store') }}" method="POST" enctype="multipart/form-data" class="modal-content">
+        <form id="formBuku" action="{{ route('admins.kelolabuku.store') }}" method="POST" enctype="multipart/form-data" class="modal-content">
         @csrf
         <div class="modal-header">
             <h5 class="modal-title" id="modalTambahBukuLabel">Tambah Buku</h5>
@@ -81,8 +81,8 @@
                     <td>{{ $item->penulis }}</td>
                     <td>{{ $item->kategori }}</td>
                     <td>
-                        <a href="{{ route('kelolabuku.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('kelolabuku.destroy', $item->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Yakin ingin menghapus buku ini?')">
+                        <a href="{{ route('admins.kelolabuku.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{{ route('admins.kelolabuku.destroy', $item->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Yakin ingin menghapus buku ini?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

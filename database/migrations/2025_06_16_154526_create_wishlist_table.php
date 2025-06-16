@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('wishlist', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('buku_id');
-            $table->foreign('buku_id')->references('id')->on('daftar_buku');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('buku_id')->constrained('daftar_buku')->onDelete('cascade');
             $table->timestamps();
         });
     }

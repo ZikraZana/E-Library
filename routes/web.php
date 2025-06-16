@@ -7,6 +7,7 @@ use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KelolaPenggunaController;
+use App\Http\Controllers\WishlistController;
 
 //================ AREA USER GUEST & ADMIN ================//
 Route::get('/daftarbuku', [DaftarBukuController::class, 'tampilDataBukuDaftarBuku'] )->name('tampilDataBukuDaftarBuku');
@@ -44,6 +45,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profileuser', function () {
         return view('users.profileuser.profileuser');
     });
+
+    Route::get('/wishlist', [WishlistController::class, 'index'] )->name('wishlist.index');
+    Route::post('/wishlist', [WishlistController::class, 'store'])->name('wishlist.store');
+    Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
 
     // Proses Edit Profile User
     Route::put('/profileuser/{id}', [UserController::class, 'updateProfile'])->name('profileuser.update');

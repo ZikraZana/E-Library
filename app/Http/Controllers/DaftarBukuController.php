@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Wishlist;
 use App\Models\DaftarBuku;
+use Illuminate\Http\Request;
 
 class DaftarBukuController extends Controller
 {
@@ -105,13 +107,15 @@ class DaftarBukuController extends Controller
     public function tampilDataBukuDaftarBuku()
     {
         $daftarbuku = DaftarBuku::all();
-        return view('users.daftarbuku.index', compact('daftarbuku'));
+        $wishlist = Wishlist::where('user_id', Auth::id())->get();
+        return view('users.daftarbuku.index', compact('daftarbuku', 'wishlist'));
     }
     public function tampilDataBukuHome(Request $request)
     {
         $search = $request->input('search');
         $kategori = $request->input('kategori');
 
+        $wishlist = Wishlist::where('user_id', Auth::id())->get();
         $query = DaftarBuku::query();
 
         if ($search) {
@@ -124,6 +128,6 @@ class DaftarBukuController extends Controller
 
         $daftarbuku = $query->get(); // <- Gunakan hasil query builder
 
-        return view('users.home.index', compact('daftarbuku'));
+        return view('users.home.index', compact('daftarbuku', 'wishlist'));
     }
 }

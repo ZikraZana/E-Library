@@ -93,9 +93,25 @@
                                     <p>Ingin menambahkan buku ini ke Wishlist atau langsung meminjam?</p>
                                 </div>
                                 <div class="modal-footer justify-content-center">
-                                    <button class="btn btn-outline-primary">❤️ Tambah ke Wishlist</button>
-                                    <form action="{{route('peminjaman', $buku->id)}}">
-                                    <button class="btn btn-success" href="/peminjaman">📚 Pinjam Sekarang</button>
+                                    @if (!$wishlist->contains('buku_id', $buku->id))
+                                        <form action="{{ route('wishlist.store') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="buku_id" value="{{ $buku->id }}">
+                                            <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                                            <button type="submit" class="btn btn-outline-primary">❤️ Tambah ke
+                                                Wishlist</button>
+                                        </form>
+                                    @else
+                                        <form
+                                            action="{{ route('wishlist.destroy', $wishlist->where('buku_id', $buku->id)->first()->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-outline-danger">💔 Hapus dari
+                                                Wishlist</button>
+                                    @endif
+                                    <form action="{{ route('peminjaman', $buku->id) }}">
+                                        <button class="btn btn-success" href="/peminjaman">📚 Pinjam Sekarang</button>
                                     </form>
                                 </div>
                             </div>

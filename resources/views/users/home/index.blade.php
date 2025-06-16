@@ -105,6 +105,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownLogin">
                     <a class="dropdown-item" href="/profileuser">Profil</a>
+                    <a class="dropdown-item" href="/wishlist">Wishlist</a>
                     <a class="dropdown-item" href="/historiuser">Riwayat Peminjaman</a>
                     <form action="/logout" method="POST">
                         @csrf
@@ -231,6 +232,7 @@
                 </div>
             @endforeach
         </div>
+        
         @foreach ($daftarbuku as $buku)
             <div class="modal fade" id="bookModal{{ $buku->id }}" tabindex="-1"
                 aria-labelledby="bookModalLabel" aria-hidden="true">
@@ -247,7 +249,20 @@
                             <p>Ingin menambahkan buku ini ke Wishlist atau langsung meminjam?</p>
                         </div>
                         <div class="modal-footer justify-content-center">
-                            <button class="btn btn-outline-primary">❤️ Tambah ke Wishlist</button>
+                            @if (!$wishlist->contains('buku_id', $buku->id))
+                            <form action="{{ route('wishlist.store') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="buku_id" value="{{ $buku->id }}">
+                                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                                <button type="submit" class="btn btn-outline-primary">❤️ Tambah ke Wishlist</button>
+                            </form>
+                            @else
+                            <form action="{{ route('wishlist.destroy', $wishlist->where('buku_id', $buku->id)->first()->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-outline-danger">💔 Hapus dari Wishlist</button>
+                            @endif
+
                             <button class="btn btn-success">📚 Pinjam Sekarang</button>
                         </div>
                     </div>

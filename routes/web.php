@@ -9,11 +9,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\KelolaPenggunaController;
 
 //================ AREA USER GUEST & ADMIN ================//
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('/daftarbuku', [DaftarBukuController::class, 'tampilDataBukuDaftarBuku'] )->name('tampilDataBukuDaftarBuku');
-Route::get('/home', [DaftarBukuController::class, 'tampilDataBukuHome'] )->name('tampilDataBukuHome');
+Route::get('/', [DaftarBukuController::class, 'tampilDataBukuHome'] )->name('tampilDataBukuHome');
 
 //================ AREA GUEST ================//
 

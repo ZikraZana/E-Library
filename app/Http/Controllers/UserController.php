@@ -77,7 +77,7 @@ class UserController extends Controller
 
         if (Auth::attempt(['email' => $credentials['email_login'], 'password' => $credentials['password_login']])) {
             $request->session()->regenerate();
-            return redirect('/home');
+            return redirect('/');
         }
         return back()->withErrors([
             'login' => 'Email atau password salah!',
@@ -91,7 +91,7 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/home');
+        return redirect('/');
     }
 
 

@@ -68,7 +68,10 @@ Route::middleware(['admin'])->group(function () {
         return view('admins.dashboard.homeadmin');
     });
 
-    Route::resource('/admin/kelolapinjam', PeminjamanController::class);
+    Route::prefix('admin')->name('admins.')->group(function () {
+    Route::resource('kelolapinjam', PeminjamanController::class);
+    });
+    //Route::resource('/admin/kelolapinjam', PeminjamanController::class);
 
     //Route::get('/admin/kelolapinjam', [PeminjamanController::class, 'index'])->name('peminjaman.index');
 

@@ -10,9 +10,6 @@
 
     <div class="row g-3 mt-3">
         <div class="col-md-4">
-            <a href="/admin/daftarpeminjaman" class="btn btn-primary w-100">📚 Daftar Peminjaman</a>
-        </div>
-        <div class="col-md-4">
             <a href="/admin/kelolapinjam" class="btn btn-success w-100">✅ Kelola Peminjaman</a>
         </div>
         <div class="col-md-4">

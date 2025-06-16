@@ -20,4 +20,9 @@ class DaftarBuku extends Model
         'jumlah_buku',
         'cover_buku',
     ];
+
+    public function buku()
+    {
+        return $this->belongsTo(DaftarBuku::class, 'buku_id');
+    }
 }

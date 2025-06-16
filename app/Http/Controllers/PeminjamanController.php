@@ -13,7 +13,7 @@ class PeminjamanController extends Controller
     // Menampilkan semua data peminjaman
     public function index()
     {
-        $peminjaman = Peminjaman::with(['pengguna', 'buku'])->get();
+        $peminjaman = Peminjaman::with(['user', 'buku'])->get();
         $pengguna = User::all();
         $buku = DaftarBuku::all();
         return view('admins.kelolapinjam.kelolapinjam', compact('peminjaman', 'pengguna', 'buku'));
@@ -72,6 +72,8 @@ class PeminjamanController extends Controller
 
         $peminjaman = Peminjaman::findOrFail($id);
         $peminjaman->update($request->all());
+        $peminjaman->status = $request->status;
+        $peminjaman->save();
 
         return redirect()->route('admins.kelolapinjam.index')->with('success', 'Data peminjaman berhasil diperbarui.');
     }

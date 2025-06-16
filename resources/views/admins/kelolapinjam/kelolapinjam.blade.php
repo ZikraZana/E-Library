@@ -16,7 +16,7 @@
             <div class="card-body">
                 <h5 class="card-title">Tambah Peminjaman</h5>
                 <div class="row g-3">
-                    <form action="{{ route('kelolapinjam.store') }}" method="POST">
+                    <form action="{{ route('admins.kelolapinjam.store') }}" method="POST">
     @csrf
     <div class="row g-3">
         <div class="col-md-3">
@@ -69,7 +69,7 @@
             @foreach($peminjaman as $index => $data)
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ $data->user->name }}</td>
+                    <td>{{ optional($data->user)->name ?? '-' }}</td>
                     <td>{{ $data->buku->judul_buku }}</td>
                     <td>{{ \Carbon\Carbon::parse($data->tanggal_peminjaman)->format('d M Y') }}</td>
                     <td>{{ \Carbon\Carbon::parse($data->tanggal_pengembalian)->format('d M Y') }}</td>
@@ -84,7 +84,7 @@
                     </td>
                     <td>
                         @if($data->status === 'Dipinjam')
-                            <form action="{{ route('peminjaman.update', $data->id) }}" method="POST">
+                            <form action="{{ route('admins.kelolapinjam.update', $data->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <input type="hidden" name="status" value="Dikembalikan">

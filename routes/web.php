@@ -36,13 +36,13 @@ Route::middleware(['auth'])->group(function () {
         return view('users.historiuser.historiuser');
     });
 
-    Route::get('/peminjaman', function () {
-        return view('users.peminjaman.peminjaman');
-    })->name('peminjaman');
-
-    Route::get('/pengembalian', function () {
-        return view('users.pengembalian.pengembalian');
+    Route::prefix('user')->name('users.')->group(function () {
+    Route::resource('peminjaman', PeminjamanController::class);
     });
+
+    Route::get('/peminjaman', function () {
+       return view('users.peminjaman.peminjaman');
+    })->name('peminjaman');
 
     Route::get('/profileuser', function () {
         return view('users.profileuser.profileuser');

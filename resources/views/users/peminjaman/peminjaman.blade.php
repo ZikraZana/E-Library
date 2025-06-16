@@ -82,20 +82,26 @@
 
   <div class="form-container">
     <h2>📚 Form Peminjaman Buku</h2>
-    <form>
-      <label>Nama Peminjam</label>
-      <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" value="{{Auth::user()->nama_lengkap}}" readonly>
+    <form method="POST" action="{{ route('users.peminjaman.store') }}">
+  @csrf
+  
+  <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+  <input type="hidden" name="buku_id" value="{{ $buku->id }}">
 
-      <label for="tanggalPinjam">Tanggal Peminjaman</label>
-      <input type="date" id="tanggalPinjam" name="tanggalPinjam" required>
+  <label>Nama Peminjam</label>
+  <input type="text" value="{{ Auth::user()->nama_lengkap }}" readonly>
 
-      <label for="tanggalKembali">Tanggal Pengembalian</label>
-      <input type="date" id="tanggalKembali" name="tanggalKembali" required>
+  <label>Judul Buku</label>
+  <input type="text" value="{{ $buku->judul_buku }}" readonly>
 
-      <button type="submit">Konfirmasi Peminjaman</button>
-    </form>
-    <a href="/daftarbuku" class="back-link">← Kembali ke Daftar Buku</a>
-  </div>
+  <label for="tanggalPinjam">Tanggal Peminjaman</label>
+  <input type="date" id="tanggalPinjam" name="tanggal_peminjaman" required>
+
+  <label for="tanggalKembali">Tanggal Pengembalian</label>
+  <input type="date" id="tanggalKembali" name="tanggal_pengembalian" required>
+
+  <button type="submit">Konfirmasi Peminjaman</button>
+</form>
 
 </body>
 </html>

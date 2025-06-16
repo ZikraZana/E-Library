@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Peminjaman;
-use App\Models\DaftarBuku;
+
 use App\Models\User;
+use App\Models\DaftarBuku;
+use App\Models\Peminjaman;
+use Illuminate\Http\Request;
 use App\Models\KelolaPengguna;
+use Illuminate\Support\Facades\Auth;
 
 class PeminjamanController extends Controller
 {
@@ -27,7 +29,6 @@ class PeminjamanController extends Controller
         return view('admins.kelolapinjam.create', compact('pengguna', 'buku'));
     }
 
-    // Menyimpan data peminjaman baru
     public function store(Request $request)
     {
         $request->validate([
@@ -41,6 +42,20 @@ class PeminjamanController extends Controller
         Peminjaman::create($request->all());
 
         return redirect()->route('admins.kelolapinjam.index')->with('success', 'Data peminjaman berhasil ditambahkan.');
+    }
+
+    public function storeUser(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'buku_id' => 'required|exists:daftar_buku,id',
+            'tanggal_peminjaman' => 'required|date',
+            'tanggal_pengembalian' => 'required|date|after_or_equal:tanggal_peminjaman',
+        ]);
+
+        Peminjaman::create($request->all());
+
+        return redirect()->route('users.historiuser.index')->with('success', 'Peminjaman berhasil dikonfirmasi.');
     }
 
     // Menampilkan detail satu peminjaman

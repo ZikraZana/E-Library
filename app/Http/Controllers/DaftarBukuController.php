@@ -17,29 +17,31 @@ class DaftarBukuController extends Controller
     // Menyimpan buku baru
     public function store(Request $request)
     {
-        $request->validate([
-            'no_katalog' => 'required|unique:daftar_buku,no_katalog',
-            'judul_buku' => 'required',
-            'penulis' => 'required',
-            'penerbit' => 'required',
-            'kategori' => 'required',
-            'jumlah_buku' => 'required|integer',
-            'cover_buku' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-        ],
-        [
-            'no_katalog.required' => 'No Katalog harus diisi.',
-            'no_katalog.unique' => 'No Katalog sudah ada.',
-            'judul_buku.required' => 'Judul Buku harus diisi.',
-            'penulis.required' => 'Penulis harus diisi.',
-            'penerbit.required' => 'Penerbit harus diisi.',
-            'kategori.required' => 'Kategori harus diisi.',
-            'jumlah_buku.required' => 'Jumlah Buku harus diisi.',
-            'jumlah_buku.integer' => 'Jumlah Buku harus berupa angka.',
-            'cover_buku.required' => 'Cover Buku harus diisi.',
-            'cover_buku.image' => 'Cover Buku harus berupa gambar.',
-            'cover_buku.mimes' => 'Cover Buku harus berupa gambar dengan format JPG, JPEG, atau PNG.',
-            'cover_buku.max' => 'Ukuran Cover Buku tidak boleh lebih dari 2MB.'
-        ]);
+        $request->validate(
+            [
+                'no_katalog' => 'required|unique:daftar_buku,no_katalog',
+                'judul_buku' => 'required',
+                'penulis' => 'required',
+                'penerbit' => 'required',
+                'kategori' => 'required',
+                'jumlah_buku' => 'required|integer',
+                'cover_buku' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            ],
+            [
+                'no_katalog.required' => 'No Katalog harus diisi.',
+                'no_katalog.unique' => 'No Katalog sudah ada.',
+                'judul_buku.required' => 'Judul Buku harus diisi.',
+                'penulis.required' => 'Penulis harus diisi.',
+                'penerbit.required' => 'Penerbit harus diisi.',
+                'kategori.required' => 'Kategori harus diisi.',
+                'jumlah_buku.required' => 'Jumlah Buku harus diisi.',
+                'jumlah_buku.integer' => 'Jumlah Buku harus berupa angka.',
+                'cover_buku.required' => 'Cover Buku harus diisi.',
+                'cover_buku.image' => 'Cover Buku harus berupa gambar.',
+                'cover_buku.mimes' => 'Cover Buku harus berupa gambar dengan format JPG, JPEG, atau PNG.',
+                'cover_buku.max' => 'Ukuran Cover Buku tidak boleh lebih dari 2MB.'
+            ]
+        );
         // Simpan file cover
         $coverPath = $request->file('cover_buku')->store('cover_buku', 'public');
 
@@ -72,7 +74,12 @@ class DaftarBukuController extends Controller
         ]);
 
         $data = $request->only([
-            'no_katalog', 'judul_buku', 'penulis', 'penerbit', 'kategori', 'jumlah_buku'
+            'no_katalog',
+            'judul_buku',
+            'penulis',
+            'penerbit',
+            'kategori',
+            'jumlah_buku'
         ]);
 
         if ($request->hasFile('cover_buku')) {
@@ -95,13 +102,28 @@ class DaftarBukuController extends Controller
 
 
     //Menampilkan card buku untuk user dan guest
-    public function tampilDataBukuDaftarBuku(){
+    public function tampilDataBukuDaftarBuku()
+    {
         $daftarbuku = DaftarBuku::all();
         return view('users.daftarbuku.index', compact('daftarbuku'));
     }
-    public function tampilDataBukuHome(){
-        $daftarbuku = DaftarBuku::all();
+    public function tampilDataBukuHome(Request $request)
+    {
+        $search = $request->input('search');
+        $kategori = $request->input('kategori');
+
+        $query = DaftarBuku::query();
+
+        if ($search) {
+            $query->where('judul_buku', 'like', '%' . $search . '%');
+        }
+
+        if ($kategori) {
+            $query->where('kategori', $kategori);
+        }
+
+        $daftarbuku = $query->get(); // <- Gunakan hasil query builder
+
         return view('users.home.index', compact('daftarbuku'));
     }
-
 }

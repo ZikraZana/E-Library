@@ -48,7 +48,6 @@ Route::middleware(['auth'])->group(function () {
         return view('users.profileuser.profileuser');
     });
 
-
     // Proses Edit Profile User
     Route::put('/profileuser/{id}', [UserController::class, 'updateProfile'])->name('profileuser.update');
 });

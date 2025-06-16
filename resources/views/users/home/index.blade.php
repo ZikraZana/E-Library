@@ -140,21 +140,33 @@
     <div class="header text-center">
         <div class="overlay">
             <h2>Mau baca buku apa hari ini?</h2>
-            <input type="text" class="form-control search-bar" placeholder="Cari buku...">
+            <form action="{{ route('tampilDataBukuHome') }}" method="GET">
+                <input type="text" class="form-control search-bar" name="search" placeholder="Cari buku..."
+                    value="{{ request('search') }}">
+            </form>
         </div>
     </div>
 
     <div class="container mt-4">
         <div class="kategori-container">
-            <button class="btn btn-primary kategori-button">Informatika</button>
-            <button class="btn btn-primary kategori-button">Sejarah</button>
-            <button class="btn btn-primary kategori-button">Ilmiah</button>
-            <button class="btn btn-primary kategori-button">Kedokteran</button>
-            <button class="btn btn-primary kategori-button">Hukum</button>
-            <button class="btn btn-primary kategori-button">Manajemen</button>
-            <button class="btn btn-primary kategori-button">Sains</button>
-            <button class="btn btn-primary kategori-button">Politik</button>
-            <button class="btn btn-primary kategori-button">Sastra</button>
+            <a href="{{ route('tampilDataBukuHome', ['kategori' => 'Informatika']) }}"
+                class="btn btn-primary kategori-button">Informatika</a>
+            <a href="{{ route('tampilDataBukuHome', ['kategori' => 'Sejarah']) }}"
+                class="btn btn-primary kategori-button">Sejarah</a>
+            <a href="{{ route('tampilDataBukuHome', ['kategori' => 'Ilmiah']) }}"
+                class="btn btn-primary kategori-button">Ilmiah</a>
+            <a href="{{ route('tampilDataBukuHome', ['kategori' => 'Kedokteran']) }}"
+                class="btn btn-primary kategori-button">Kedokteran</a>
+            <a href="{{ route('tampilDataBukuHome', ['kategori' => 'Hukum']) }}"
+                class="btn btn-primary kategori-button">Hukum</a>
+            <a href="{{ route('tampilDataBukuHome', ['kategori' => 'Manajemen']) }}"
+                class="btn btn-primary kategori-button">Manajemen</a>
+            <a href="{{ route('tampilDataBukuHome', ['kategori' => 'Sains']) }}"
+                class="btn btn-primary kategori-button">Sains</a>
+            <a href="{{ route('tampilDataBukuHome', ['kategori' => 'Politik']) }}"
+                class="btn btn-primary kategori-button">Politik</a>
+            <a href="{{ route('tampilDataBukuHome', ['kategori' => 'Sastra']) }}"
+                class="btn btn-primary kategori-button">Sastra</a>
 
             <div class="dropdown m-1">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="lainnyaDropdown"
@@ -162,20 +174,48 @@
                     Lainnya
                 </button>
                 <div class="dropdown-menu" aria-labelledby="lainnyaDropdown">
-                    <a class="dropdown-item" href="#">Novel</a>
-                    <a class="dropdown-item" href="#">Psikologi</a>
-                    <a class="dropdown-item" href="#">Teknik</a>
-                    <a class="dropdown-item" href="#">Informatika</a>
-                    <a class="dropdown-item" href="#">Pendidikan</a>
+                    <a class="dropdown-item"
+                        href="{{ route('tampilDataBukuHome', ['kategori' => 'Novel']) }}">Novel</a>
+                    <a class="dropdown-item"
+                        href="{{ route('tampilDataBukuHome', ['kategori' => 'Psikologi']) }}">Psikologi</a>
+                    <a class="dropdown-item"
+                        href="{{ route('tampilDataBukuHome', ['kategori' => 'Teknik']) }}">Teknik</a>
+                    <a class="dropdown-item"
+                        href="{{ route('tampilDataBukuHome', ['kategori' => 'Informatika']) }}">Informatika</a>
+                    <a class="dropdown-item"
+                        href="{{ route('tampilDataBukuHome', ['kategori' => 'Pendidikan']) }}">Pendidikan</a>
                 </div>
             </div>
         </div>
-
         <div class="d-flex justify-content-between align-items-center">
-            <h4 class="mt-4">Rekomendasi</h4>
+            @if (!request('search') && !request('kategori'))
+                <h4 class="mt-4">Rekomendasi</h4>
+            @elseif (request('search'))
+                <p class="mt-4">
+                    <a href="{{ route('tampilDataBukuHome') }}" class="btn btn-secondary btn-sm rounded-pill"><i
+                            class="fas fa-arrow-left"></i> Kembali</a>
+                    <span class="ms-3">Hasil pencarian untuk: <span
+                            class="badge bg-primary rounded-pill">{{ request('search') }}</span></span>
+                </p>
+            @elseif (request('kategori'))
+                <p class="mt-4">
+                    <a href="{{ route('tampilDataBukuHome') }}" class="btn btn-secondary btn-sm rounded-pill"><i
+                            class="fas fa-arrow-left"></i> Kembali</a>
+                    <span class="ms-3">Kategori: <span
+                            class="badge bg-primary rounded-pill">{{ request('kategori') }}</span></span>
+                </p>
+            @endif
             <a href="{{ route('tampilDataBukuDaftarBuku') }}" class="mt-3"
                 style="text-decoration: underline !important;">Lihat Semua</a>
         </div>
+
+        @if (request('search') && $daftarbuku->isEmpty())
+            <p>Tidak ditemukan buku dengan judul tersebut.</p>
+        @endif
+
+        @if (request('kategori') && $daftarbuku->isEmpty())
+            <p>Tidak ditemukan buku dengan kategori tersebut.</p>
+        @endif
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
             @foreach ($daftarbuku as $buku)
                 <div class="col">
@@ -188,7 +228,8 @@
                             <h5 class="card-title">{{ $buku->judul_buku }}</h5>
                         </div>
                     </div>
-                </div>            @endforeach
+                </div>
+            @endforeach
         </div>
         @foreach ($daftarbuku as $buku)
             <div class="modal fade" id="bookModal{{ $buku->id }}" tabindex="-1"

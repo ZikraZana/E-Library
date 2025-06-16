@@ -252,51 +252,6 @@
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="container mt-5">
-                        <h4 class="text-center mb-4">📘 Daftar Buku di Perpustakaan</h4>
-                        <div class="list-group">
-
-
-                            <div class="list-group-item list-group-item-action d-flex align-items-start">
-                                <img src="https://ebooks.gramedia.com/ebook-covers/62925/image_highres/BLK_BIASRKYE2021802223.jpg"
-                                    alt="Sampul Buku" class="img-thumbnail me-3"
-                                    style="width: 80px; height: 100px; object-fit: cover;">
-                                <div>
-                                    <h5 class="mb-1">Bicara Itu Ada Seninya</h5>
-                                    <small class="text-muted">Oh Su Hyang</small>
-                                    <p class="mb-1">Dasar untuk berkomunikasi</p>
-                                    <span class="badge bg-info text-dark">Komunikasi</span>
-                                </div>
-                            </div>
-
-
-                            <div class="list-group-item list-group-item-action d-flex align-items-start mt-3">
-                                <img src="https://ebooks.gramedia.com/ebook-covers/101102/image_highres/BLK_PIK1743140052515.jpg"
-                                    alt="Sampul Buku" class="img-thumbnail me-3"
-                                    style="width: 80px; height: 100px; object-fit: cover;">
-                                <div>
-                                    <h5 class="mb-1">Pengantar Ilmu Komputer</h5>
-                                    <small class="text-muted">PenaMuda Media</small>
-                                    <p class="mb-1">Pemahaman awal untuk ilmu komputer</p>
-                                    <span class="badge bg-secondary">Komputer</span>
-                                </div>
-                            </div>
-
-
-                            <div class="list-group-item list-group-item-action d-flex align-items-start mt-3">
-                                <img src="https://ebooks.gramedia.com/ebook-covers/100402/image_highres/BLK_M1741339034472.jpg"
-                                    alt="Sampul Buku" class="img-thumbnail me-3"
-                                    style="width: 80px; height: 100px; object-fit: cover;">
-                                <div>
-                                    <h5 class="mb-1">Manajemen</h5>
-                                    <small class="text-muted">Politeknik Keuangan Negara</small>
-                                    <p class="mb-1">Panduan menyusun dan mengelola manajemen.</p>
-                                    <span class="badge bg-success">Manajemen</span>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
 

@@ -69,7 +69,7 @@
             @foreach($peminjaman as $index => $data)
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ optional($data->user)->name ?? '-' }}</td>
+                    <td>{{ $data->user->nama_lengkap }}</td>
                     <td>{{ $data->buku->judul_buku }}</td>
                     <td>{{ \Carbon\Carbon::parse($data->tanggal_peminjaman)->format('d M Y') }}</td>
                     <td>{{ \Carbon\Carbon::parse($data->tanggal_pengembalian)->format('d M Y') }}</td>

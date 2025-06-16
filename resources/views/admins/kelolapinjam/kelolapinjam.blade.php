@@ -13,6 +13,15 @@
         <h2 class="text-center mb-5">📘 Kelola Peminjaman Buku</h2>
 
         {{-- Form Tambah Peminjaman --}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul style="margin: 0;">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="card mb-4">
             <div class="card-body">
                 <h5 class="card-title">Tambah Peminjaman</h5>
@@ -42,6 +51,7 @@
                             <div class="col-md-3">
                                 <input type="date" name="tanggal_pengembalian" class="form-control" required />
                             </div>
+
                             <input type="hidden" name="status" value="Dipinjam">
                             <div class="col-md-12 text-end">
                                 <button type="submit" class="btn btn-primary mt-2">Tambah Peminjaman</button>

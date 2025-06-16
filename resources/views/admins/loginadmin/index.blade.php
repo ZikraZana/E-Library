@@ -95,10 +95,9 @@
         <h4>Login Sebagai Admin</h4>
         <div class="tabs">
             <div class="tab active" id="tab-login">Login</div>
-            <div class="tab" id="tab-daftar">Daftar</div>
         </div>
 
-        <form id="form-login" action="{{ route('admin.login.post') }}" method="POST">
+        <form action="{{ route('admin.login.post') }}" method="POST">
             @csrf
             <div class="input-group">
                 <label for="email-login">Email</label>
@@ -108,56 +107,13 @@
                 <label for="password-login">Password</label>
                 <input type="password" id="password-login" placeholder="Password" name="password" required />
             </div>
+            @if ($errors->has('email'))
+                <i class="alert alert-danger" style="color: red; font-size: 13px;">{{ $errors->first('email') }}</i>
+            @endif
             <p class="small-text">Hanya untuk akses admin</p>
             <button class="button" type="submit">LOGIN ADMIN</button>
         </form>
-
-        <form id="form-daftar" style="display: none;">
-            <div class="input-group">
-                <label for="nama-daftar">Nama Lengkap</label>
-                <input type="text" id="nama-daftar" placeholder="Nama lengkap" required />
-            </div>
-            <div class="input-group">
-                <label for="email-daftar">Email</label>
-                <input type="email" id="email-daftar" placeholder="admin@email.com" required />
-            </div>
-            <div class="input-group">
-                <label for="password-daftar">Password</label>
-                <input type="password" id="password-daftar" placeholder="Password" required />
-            </div>
-            <div class="input-group">
-                <label for="new-password">New Password</label>
-                <input type="password" id="new-password" placeholder="Password Baru" required />
-            </div>
-            <div class="input-group">
-                <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" placeholder="Konfirmasi Password" required />
-            </div>
-            <p class="small-text">Daftar hanya untuk admin resmi</p>
-            <button class="button" type="submit">DAFTAR ADMIN</button>
-        </form>
     </div>
-
-    <script>
-        const tabLogin = document.getElementById('tab-login');
-        const tabDaftar = document.getElementById('tab-daftar');
-        const formLogin = document.getElementById('form-login');
-        const formDaftar = document.getElementById('form-daftar');
-
-        tabLogin.addEventListener('click', () => {
-            tabLogin.classList.add('active');
-            tabDaftar.classList.remove('active');
-            formLogin.style.display = 'block';
-            formDaftar.style.display = 'none';
-        });
-
-        tabDaftar.addEventListener('click', () => {
-            tabDaftar.classList.add('active');
-            tabLogin.classList.remove('active');
-            formLogin.style.display = 'none';
-            formDaftar.style.display = 'block';
-        });
-    </script>
 
 </body>
 

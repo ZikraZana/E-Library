@@ -37,8 +37,19 @@ class PeminjamanController extends Controller
             'tanggal_peminjaman' => 'required|date',
             'tanggal_pengembalian' => 'required|date|after_or_equal:tanggal_peminjaman',
             'status' => 'required|string',
+        ], [
+            'user_id.required' => 'ID pengguna harus diisi',
+            'user_id.exists' => 'ID pengguna tidak valid',
+            'buku_id.required' => 'ID buku harus diisi',
+            'buku_id.exists' => 'ID buku tidak valid',
+            'tanggal_peminjaman.required' => 'Tanggal peminjaman harus diisi',
+            'tanggal_peminjaman.date' => 'Format tanggal peminjaman tidak valid',
+            'tanggal_pengembalian.required' => 'Tanggal pengembalian harus diisi',
+            'tanggal_pengembalian.date' => 'Format tanggal pengembalian tidak valid',
+            'tanggal_pengembalian.after_or_equal' => 'Tanggal pengembalian harus setelah atau sama dengan tanggal peminjaman',
+            'status.required' => 'Status harus diisi',
+            'status.string' => 'Status harus berupa teks'
         ]);
-
         Peminjaman::create($request->all());
 
         return redirect()->route('admins.kelolapinjam.index')->with('success', 'Data peminjaman berhasil ditambahkan.');

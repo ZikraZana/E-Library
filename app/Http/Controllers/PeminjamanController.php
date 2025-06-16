@@ -76,25 +76,9 @@ class PeminjamanController extends Controller
         return view('admins.kelolapinjam.show', compact('peminjaman'));
     }
 
-    // Menampilkan form edit
-    public function edit($id)
-    {
-        $peminjaman = Peminjaman::findOrFail($id);
-        $users = User::all();
-        $buku = DaftarBuku::all();
-        return view('admins.kelolapinjam.edit', compact('peminjaman', 'pengguna', 'buku'));
-    }
-
     // Update data peminjaman
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'buku_id' => 'required|exists:daftar_buku,id',
-            'tanggal_peminjaman' => 'required|date',
-            'tanggal_pengembalian' => 'required|date|after_or_equal:tanggal_peminjaman',
-            'status' => 'required|string',
-        ]);
 
         $peminjaman = Peminjaman::findOrFail($id);
         $peminjaman->update($request->all());

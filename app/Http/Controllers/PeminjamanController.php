@@ -18,6 +18,7 @@ class PeminjamanController extends Controller
         $peminjaman = Peminjaman::with(['user', 'buku'])->get();
         $pengguna = User::all();
         $buku = DaftarBuku::all();
+        $peminjaman = Peminjaman::all();
         return view('admins.kelolapinjam.kelolapinjam', compact('peminjaman', 'pengguna', 'buku'));
     }
 
@@ -66,8 +67,17 @@ class PeminjamanController extends Controller
 
         Peminjaman::create($request->all());
 
-        return redirect()->route('users.historiuser.index')->with('success', 'Peminjaman berhasil dikonfirmasi.');
+        return redirect()->route('peminjaman.storeUser')->with('success', 'Peminjaman berhasil dikonfirmasi.');
     }
+
+    public function riwayatUser()
+    {
+        $peminjaman = Peminjaman::with('buku')
+            ->get();
+
+        return view('users.historiuser.historiuser', compact('peminjaman'));
+    }
+
 
     // Menampilkan detail satu peminjaman
     public function show($id)
@@ -97,4 +107,3 @@ class PeminjamanController extends Controller
         return redirect()->route('admins.kelolapinjam.index')->with('success', 'Data peminjaman berhasil dihapus.');
     }
 }
-

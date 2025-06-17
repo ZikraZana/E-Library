@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KelolaPenggunaController;
 use App\Http\Controllers\WishlistController;
+use App\Models\DaftarBuku;
 
 //================ AREA USER GUEST & ADMIN ================//
 Route::get('/daftarbuku', [DaftarBukuController::class, 'tampilDataBukuDaftarBuku'] )->name('tampilDataBukuDaftarBuku');
@@ -30,16 +31,25 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middl
 //================ AREA USER ================//
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/historiuser', function () {
-        return view('users.historiuser.historiuser');
-    });
+    Route::get('/historiuser', [PeminjamanController::class, 'riwayatUser'])->name('riwayat.user');
+    Route::post('/historiuser', [PeminjamanController::class, 'storeUser'])->name('peminjaman.storeUser');
 
     Route::prefix('user')->name('users.')->group(function () {
-    Route::resource('peminjaman', PeminjamanController::class);
+        Route::resource('peminjaman', PeminjamanController::class);
     });
 
+    // Route::get('/historiuser', function () {
+    //     return view('users.historiuser.historiuser');
+    // });
+    // Route::post('/historiuser', [PeminjamanController::class, 'storeUser'])->name('peminjaman.storeUser');
+
+    // Route::prefix('user')->name('users.')->group(function () {
+    // Route::resource('peminjaman', PeminjamanController::class);
+    // });
+
     Route::get('/peminjaman', function () {
-       return view('users.peminjaman.peminjaman');
+    $buku = DaftarBuku::first();
+    return view('users.peminjaman.peminjaman', compact('buku'));
     })->name('peminjaman');
 
     Route::get('/profileuser', function () {

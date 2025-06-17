@@ -91,6 +91,8 @@
                                     <img id="modalBookImg" src="{{ asset('storage/' . $buku->cover_buku) }}"
                                         class="img-fluid mb-3" style="max-height: 250px;">
                                     <p>Ingin menambahkan buku ini ke Wishlist atau langsung meminjam?</p>
+                                    <p class="fw-bold fs-5 mb-3" style="color: #333;"><i class="bi bi-book"></i> Jumlah
+                                        Buku: <span class="badge bg-primary">{{ $buku->jumlah_buku }}</span></p>
                                 </div>
                                 <div class="modal-footer justify-content-center">
                                     @if (!$wishlist->contains('buku_id', $buku->id))
@@ -110,7 +112,7 @@
                                             <button type="submit" class="btn btn-outline-danger">💔 Hapus dari
                                                 Wishlist</button>
                                     @endif
-                                    <form action="{{ route('peminjaman', $buku->id) }}">
+                                    <form action="{{ route('peminjaman.storeUser', $buku->id) }}">
                                         <button class="btn btn-success" href="/peminjaman">📚 Pinjam Sekarang</button>
                                     </form>
                                 </div>

@@ -47,11 +47,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::resource('peminjaman', PeminjamanController::class);
     // });
 
-    Route::get('/peminjaman', function () {
-    $buku = DaftarBuku::first();
-    return view('users.peminjaman.peminjaman', compact('buku'));
-    })->name('peminjaman');
-
+    Route::get('/peminjaman/{id}', [PeminjamanController::class, 'indexUser'])->name('peminjaman.indexUser');
     Route::get('/profileuser', function () {
         return view('users.profileuser.profileuser');
     });

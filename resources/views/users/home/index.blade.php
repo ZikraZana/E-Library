@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-
-
-
     <title>Home</title>
     <style>
         .header {
@@ -152,7 +149,7 @@
         </div>
     </div>
 
-    <div class="container mt-4">
+    <div class="container mt-4 mb-5 pb-5">
         <div class="kategori-container">
             <a href="{{ route('tampilDataBukuHome', ['kategori' => 'Informatika']) }}"
                 class="btn btn-primary kategori-button">Informatika</a>
@@ -251,6 +248,8 @@
                             <img id="modalBookImg" src="{{ asset('storage/' . $buku->cover_buku) }}"
                                 class="img-fluid mb-3" style="max-height: 250px;">
                             <p>Ingin menambahkan buku ini ke Wishlist atau langsung meminjam?</p>
+                            <p class="fw-bold fs-5 mb-3" style="color: #333;"><i class="bi bi-book"></i> Jumlah
+                                Buku: <span class="badge bg-primary">{{ $buku->jumlah_buku }}</span></p>
                         </div>
                         <div class="modal-footer justify-content-center">
                             @if (!$wishlist->contains('buku_id', $buku->id))
@@ -271,7 +270,9 @@
                                         Wishlist</button>
                             @endif
 
-                            <button class="btn btn-success">📚 Pinjam Sekarang</button>
+                            <form action="{{ route('peminjaman.indexUser', $buku->id) }}">    
+                                <button class="btn btn-success" href="/peminjaman">📚 Pinjam Sekarang</button>
+                            </form>
                         </div>
                     </div>
                 </div>

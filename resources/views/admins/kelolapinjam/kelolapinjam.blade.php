@@ -98,7 +98,7 @@
                         <td>{{ \Carbon\Carbon::parse($data->tanggal_peminjaman)->format('d M Y') }}</td>
                         <td>{{ \Carbon\Carbon::parse($data->tanggal_pengembalian)->format('d M Y') }}</td>
                         <td>
-                            @if ($data->status === 'Belum dipinjam')
+                            @if ($data->status === 'Belum Dipinjam')
                                 <span class="badge bg-secondary">Belum dipinjam</span>
                             @elseif($data->status === 'Dipinjam')
                                 <span class="badge bg-warning">Dipinjam</span>
@@ -107,53 +107,84 @@
                             @endif
                         </td>
                         <td>
-                            @if ($data->status === 'Dipinjam')
-                                <form action="{{ route('admins.kelolapinjam.update', $data->id) }}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <input type="hidden" name="status" value="Dikembalikan">
-                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#konfirmasiModal{{ $data->id }}">Konfirmasi
-                                        Pengembalian</button>
+                        @if ($data->status === 'Belum Dipinjam')
+                            <form action="{{ route('admins.kelolapinjam.update', $data->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="status" value="Dipinjam">
+                                <button type="button" class="btn btn-warning btn-sm border-black" data-bs-toggle="modal"
+                                    data-bs-target="#konfirmasiModal{{ $data->id }}">Buku telah dipinjam</button>
 
-                                    <!-- Modal Konfirmasi -->
-                                    <div class="modal fade" id="konfirmasiModal{{ $data->id }}" tabindex="-1"
-                                        aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="konfirmasiModalLabel">Konfirmasi
-                                                        Pengembalian</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah Anda yakin ingin mengkonfirmasi pengembalian buku
-                                                    "{{ $data->buku->judul_buku }}" dari {{ $data->user->nama_lengkap }}?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Batal</button>
-                                                    <button type="submit" class="btn btn-success">Konfirmasi</button>
-                                                </div>
+                                <!-- Modal Konfirmasi -->
+                                <div class="modal fade" id="konfirmasiModal{{ $data->id }}" tabindex="-1"
+                                    aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="konfirmasiModalLabel">Konfirmasi
+                                                    Pengembalian</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah Anda yakin ingin mengkonfirmasi pengembalian buku
+                                                "{{ $data->buku->judul_buku }}" dari {{ $data->user->nama_lengkap }}?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn btn-success">Konfirmasi</button>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
-                            @elseif($data->status === 'Dikembalikan')
-                                <button class="btn btn-secondary btn-sm" disabled>Selesai</button>
-                            @else
-                                <em>-</em>
-                            @endif
-                        </td>
-                    </tr>
+                                </div>
+                            </form>
+                        @elseif ($data->status === 'Dipinjam')
+                            <form action="{{ route('admins.kelolapinjam.update', $data->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="status" value="Dikembalikan">
+                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#konfirmasiModal{{ $data->id }}">Konfirmasi
+                                    Pengembalian</button>
+
+                                <!-- Modal Konfirmasi -->
+                                <div class="modal fade" id="konfirmasiModal{{ $data->id }}" tabindex="-1"
+                                    aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="konfirmasiModalLabel">Konfirmasi
+                                                    Pengembalian</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah Anda yakin ingin mengkonfirmasi pengembalian buku
+                                                "{{ $data->buku->judul_buku }}" dari {{ $data->user->nama_lengkap }}?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn btn-success">Konfirmasi</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        @elseif($data->status === 'Dikembalikan')
+                            <button class="btn btn-secondary btn-sm" disabled>Selesai</button>
+                        @else
+                            <em>-</em>
+                @endif
+                </td>
+                </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
-        </script>
-    
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+    </script>
 @endsection

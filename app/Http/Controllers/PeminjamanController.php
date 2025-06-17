@@ -52,8 +52,24 @@ class PeminjamanController extends Controller
             'status.string' => 'Status harus berupa teks'
         ]);
         Peminjaman::create($request->all());
+        
+        $buku = DaftarBuku::findOrFail($request->buku_id);
+        if($buku->jumlah_buku > 0) {
+            $buku->decrement('jumlah_buku');
+        }else{
+            return redirect()->back()->with('error', 'Buku tidak tersedia');
+        }
 
         return redirect()->route('admins.kelolapinjam.index')->with('success', 'Data peminjaman berhasil ditambahkan.');
+    }
+
+    public function indexUser($id){
+        $peminjaman = Peminjaman::with(['user', 'buku'])
+            ->where('user_id', $id)
+            ->get();
+        $pengguna = User::find($id);
+        $buku = DaftarBuku::where('id', $id)->first();
+        return view('users.peminjaman.peminjaman', compact('peminjaman', 'pengguna', 'buku'));
     }
 
     public function storeUser(Request $request)
@@ -66,6 +82,12 @@ class PeminjamanController extends Controller
         ]);
 
         Peminjaman::create($request->all());
+        $buku = DaftarBuku::findOrFail($request->buku_id);
+        if($buku->jumlah_buku > 0) {
+            $buku->decrement('jumlah_buku');
+        }else{
+            return redirect()->back()->with('error', 'Buku tidak tersedia');
+        }
 
         return redirect()->route('peminjaman.storeUser')->with('success', 'Peminjaman berhasil dikonfirmasi.');
     }

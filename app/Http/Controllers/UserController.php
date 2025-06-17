@@ -127,6 +127,6 @@ class UserController extends Controller
             'foto_profil' => $data['foto_profil'] ?? 'foto_profil/anonym.png',
         ]);
 
-        return redirect('/profileuser');
+        return redirect()->route('profileuser.indexUser', $id)->with('success', 'Profile berhasil diperbarui!');
     }
 }

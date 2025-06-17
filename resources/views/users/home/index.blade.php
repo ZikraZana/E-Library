@@ -105,7 +105,8 @@
                     👤 {{ Auth::user()->nama_lengkap }}
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownLogin">
-                    <a class="dropdown-item" href="{{route('profileuser.indexUser', $id = Auth::user()->id)}}">Profil</a>
+                    <a class="dropdown-item"
+                        href="{{ route('profileuser.indexUser', $id = Auth::user()->id) }}">Profil</a>
                     <a class="dropdown-item" href="/wishlist">Wishlist</a>
                     <a class="dropdown-item" href="/historiuser">Riwayat Peminjaman</a>
                     <form action="/logout" method="POST">
@@ -219,7 +220,7 @@
             <p>Tidak ditemukan buku dengan kategori tersebut.</p>
         @endif
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
-            @foreach ($daftarbuku as $buku)
+            @forelse ($daftarbuku as $buku)
                 <div class="col">
                     <div class="card" data-bs-toggle="modal" data-bs-target="#bookModal{{ $buku->id }}"
                         data-title="{{ $buku->judul_buku }}" data-img="{{ asset('storage/' . $buku->cover_buku) }}"
@@ -231,8 +232,12 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
-        </div>
+                @empty
+                    <div class="col-12 text-center">
+                        <p class="text-muted">Buku tidak tersedia karena admin belum memasukkan daftar buku</p>
+                    </div>
+                @endforelse
+            </div>
 
         @foreach ($daftarbuku as $buku)
             <div class="modal fade" id="bookModal{{ $buku->id }}" tabindex="-1"
@@ -278,8 +283,7 @@
                     </div>
                 </div>
             </div>
-        @endforeach
-    </div>
+        @endforeach    </div>
     <footer class="footer fixed-bottom mt-5 py-3 bg-dark text-white">
         <div class="container">
             <div class="text-center">

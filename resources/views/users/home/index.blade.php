@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+
     <title>Home</title>
     <style>
         .header {
@@ -232,7 +236,7 @@
                 </div>
             @endforeach
         </div>
-        
+
         @foreach ($daftarbuku as $buku)
             <div class="modal fade" id="bookModal{{ $buku->id }}" tabindex="-1"
                 aria-labelledby="bookModalLabel" aria-hidden="true">
@@ -250,17 +254,21 @@
                         </div>
                         <div class="modal-footer justify-content-center">
                             @if (!$wishlist->contains('buku_id', $buku->id))
-                            <form action="{{ route('wishlist.store') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="buku_id" value="{{ $buku->id }}">
-                                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                                <button type="submit" class="btn btn-outline-primary">❤️ Tambah ke Wishlist</button>
-                            </form>
+                                <form action="{{ route('wishlist.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="buku_id" value="{{ $buku->id }}">
+                                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                                    <button type="submit" class="btn btn-outline-primary">❤️ Tambah ke
+                                        Wishlist</button>
+                                </form>
                             @else
-                            <form action="{{ route('wishlist.destroy', $wishlist->where('buku_id', $buku->id)->first()->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-outline-danger">💔 Hapus dari Wishlist</button>
+                                <form
+                                    action="{{ route('wishlist.destroy', $wishlist->where('buku_id', $buku->id)->first()->id) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger">💔 Hapus dari
+                                        Wishlist</button>
                             @endif
 
                             <button class="btn btn-success">📚 Pinjam Sekarang</button>
@@ -269,27 +277,29 @@
                 </div>
             </div>
         @endforeach
-
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('success'))
         <script>
-            const bookModal = document.getElementById('bookModal');
-            bookModal.addEventListener('show.bs.modal', function(event) {
-                const card = event.relatedTarget;
-                const title = card.getAttribute('data-title');
-                const imgSrc = card.getAttribute('data-img');
-
-                const modalTitle = bookModal.querySelector('.modal-title');
-                const modalImg = bookModal.querySelector('#modalBookImg');
-
-                modalTitle.textContent = '📖 ' + title;
-                modalImg.src = imgSrc;
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-start",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "success",
+                title: "Berhasil Login!"
             });
         </script>
-    </div>
-
+    @endif
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

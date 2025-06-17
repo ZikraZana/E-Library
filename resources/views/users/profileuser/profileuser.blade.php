@@ -354,7 +354,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary mt-3">Lainnya</button>
+                            <a href="/wishlist" class="btn btn-primary mt-3">Lainnya</a>
                         </div>
                     </div>
                 </div>

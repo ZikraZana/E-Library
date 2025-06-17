@@ -56,7 +56,7 @@ class UserController extends Controller
             'password' => Hash::make($request->new_password)
         ]);
 
-        return redirect()->route('loginregister');
+        return redirect()->route('loginregister')->with('success', 'Registrasi berhasil! Silakan login.');
     }
 
 
@@ -77,7 +77,7 @@ class UserController extends Controller
 
         if (Auth::attempt(['email' => $credentials['email_login'], 'password' => $credentials['password_login']])) {
             $request->session()->regenerate();
-            return redirect('/');
+            return redirect('/')->with('success', 'Login berhasil!');
         }
         return back()->withErrors([
             'login' => 'Email atau password salah!',

@@ -278,7 +278,7 @@
             </div>
         @endforeach
     </div>
-    <footer class="footer mt-5 py-3 bg-dark text-white">
+    <footer class="footer fixed-bottom mt-5 py-3 bg-dark text-white">
         <div class="container">
             <div class="text-center">
                 <p class="mb-0">&copy; {{ date('Y') }} E-Library. All rights reserved.</p>

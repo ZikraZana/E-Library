@@ -48,9 +48,7 @@ Route::middleware(['auth'])->group(function () {
     // });
 
     Route::get('/peminjaman/{id}', [PeminjamanController::class, 'indexUser'])->name('peminjaman.indexUser');
-    Route::get('/profileuser', function () {
-        return view('users.profileuser.profileuser');
-    });
+    Route::get('/profileuser/{id}', [UserController::class, 'indexProfile'])->name('profileuser.indexUser');
 
     Route::get('/wishlist', [WishlistController::class, 'index'] )->name('wishlist.index');
     Route::post('/wishlist', [WishlistController::class, 'store'])->name('wishlist.store');

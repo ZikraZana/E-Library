@@ -53,6 +53,7 @@ class PeminjamanController extends Controller
         ]);
         Peminjaman::create($request->all());
 
+
         $buku = DaftarBuku::findOrFail($request->buku_id);
         if ($buku->jumlah_buku > 0) {
             $buku->decrement('jumlah_buku');
@@ -70,6 +71,9 @@ class PeminjamanController extends Controller
             ->get();
         $pengguna = User::find($id);
         $buku = DaftarBuku::where('id', $id)->first();
+        if ($buku->jumlah_buku == 0) {
+            return redirect()->back()->with('buku_habis', 'Buku tidak tersedia');
+        }
         return view('users.peminjaman.peminjaman', compact('peminjaman', 'pengguna', 'buku'));
     }
 
@@ -92,7 +96,7 @@ class PeminjamanController extends Controller
             'tanggal_pengembalian.date' => 'Format tanggal pengembalian tidak valid',
             'tanggal_pengembalian.after_or_equal' => 'Tanggal pengembalian harus setelah atau sama dengan tanggal peminjaman'
         ]);
-        
+
         Peminjaman::create($request->all());
         $buku = DaftarBuku::findOrFail($request->buku_id);
         if ($buku->jumlah_buku > 0) {

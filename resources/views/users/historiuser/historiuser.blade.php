@@ -152,6 +152,17 @@
             </div>
         </div>
 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @if (session('success'))
+            <script>
+                Swal.fire({
+                    title: "Berhasil!",
+                    text: "Buku yang kamu pesan sudah ditambahkan",
+                    icon: "success"
+                });
+            </script>
+        @endif
+
         <script>
             const tabPeminjaman = document.getElementById('tab-peminjaman');
             const tabPengembalian = document.getElementById('tab-pengembalian');

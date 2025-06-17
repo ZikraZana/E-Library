@@ -217,8 +217,8 @@
 
         <div class="text-center">
 
-            <img src="{{ asset('storage/' . Auth::user()->foto_profil) }}"
-                class="profile-picture shadow" alt="Profile Picture">
+            <img src="{{ asset('storage/' . Auth::user()->foto_profil) }}" class="profile-picture shadow"
+                alt="Profile Picture">
 
 
             <h4 class="mt-2 mb-0 fw-bold">
@@ -246,7 +246,8 @@
             <div class="modal-dialog">
                 <div class="modal-content">
 
-                    <form action="{{ route('profileuser.update', $id = Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('profileuser.update', $id = Auth::user()->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="modal-header">
@@ -257,8 +258,8 @@
                         <div class="modal-body">
                             <div class="row justify-content-center">
 
-                                <img src="{{asset('storage/' . Auth::user()->foto_profil)}}" alt="Foto Profil" id="previewImage"
-                                    class="img-fluid rounded-circle mb-3"
+                                <img src="{{ asset('storage/' . Auth::user()->foto_profil) }}" alt="Foto Profil"
+                                    id="previewImage" class="img-fluid rounded-circle mb-3"
                                     style="width: 200px; height: 180px; object-fit: cover;">
                                 <div class="mt-2 d-flex justify-content-center">
                                     <label for="profileImage" class="btn btn-warning btn-sm">
@@ -325,7 +326,8 @@
                     <p>Kunjungan Perpustakaan</p>
                 </div>
                 <div style="width: 300px;">
-                    <h3>50</h3>
+
+                    <h3>{{ $peminjaman->count() }}</h3>
                     <p>Buku Terpinjam</p>
                 </div>
             </div>
@@ -336,22 +338,24 @@
                     <div class="col">
                         <h4>Buku yang dipinjam</h4>
                         <div class="card-group">
-                            <div class="card book-card">
-                                <div class="card-body">
-                                    <img src="https://ebooks.gramedia.com/ebook-covers/101102/image_highres/BLK_PIK1743140052515.jpg"
-                                        alt="Buku" class="img-thumbnail mr-3" style="width: 100px;">
-                                    <h5 class="card-title">Pengantar Ilmu Komputer</h5>
-                                    <p class="card-text">PenaMuda Media</p>
+                            @if ($peminjaman->count() == 0)
+                                <div class="card book-card">
+                                    <div class="card-body">
+                                        <p class="text-center">Tidak ada buku yang dipinjam.</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card book-card">
-                                <div class="card-body">
-                                    <img src="https://ebooks.gramedia.com/ebook-covers/71503/image_highres/BLK_ML2022126897.jpg"
-                                        alt="Buku" class="img-thumbnail mr-3" style="width: 100px;">
-                                    <h5 class="card-title">Machine Learning</h5>
-                                    <p class="card-text">Hugh Howey</p>
-                                </div>
-                            </div>
+                            @else
+                                @foreach ($peminjaman->take(2) as $pinjam)
+                                    <div class="card book-card">
+                                        <div class="card-body">
+                                            <img src="{{ asset('storage/' . $pinjam->buku->cover_buku) }}"
+                                                alt="Buku" class="img-thumbnail mr-3" style="width: 100px;">
+                                            <h5 class="card-title">{{ $pinjam->buku->judul_buku }}</h5>
+                                            <p class="card-text">{{ $pinjam->buku->penulis }}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                         <a href="/historiuser" class="btn btn-primary mt-3">Lainnya</a>
                     </div>
@@ -361,29 +365,32 @@
                     <div class="col">
                         <h4>Wishlist</h4>
                         <div class="card-group">
-                            <div class="card book-card">
-                                <div class="card-body">
-                                    <img src="https://ebooks.gramedia.com/ebook-covers/62925/image_highres/BLK_BIASRKYE2021802223.jpg"
-                                        alt="Buku" class="img-thumbnail mr-3" style="width: 100px;">
-                                    <h5 class="card-title">Bicara Itu Ada Seninya</h5>
-                                    <p class="card-text">Oh Su Hyang</p>
+                            @if ($wishlist->count() == 0)
+                                <div class="card book-card">
+                                    <div class="card-body">
+                                        <p class="text-center">Tidak ada wishlist yang ditambahkan</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card book-card">
-                                <div class="card-body">
-                                    <img src="https://ebooks.gramedia.com/ebook-covers/76681/image_highres/BLK_MKPPK2022712040.jpg"
-                                        alt="Buku" class="img-thumbnail mr-3" style="width: 100px;">
-                                    <h5 class="card-title">Morfologi: Kajian Proses Pembentukan Kata</h5>
-                                    <p class="card-text">Prof. Dr. Drs. I Wayan Simpen. M.Hum</p>
-                                </div>
-                            </div>
+                            @else
+                                @foreach ($wishlist->take(2) as $wish)
+                                    <div class="card book-card">
+                                        <div class="card-body">
+                                            <img src="{{ asset('storage/' . $wish->buku->cover_buku) }}"
+                                                alt="Buku" class="img-thumbnail mr-3" style="width: 100px;">
+                                            <h5 class="card-title">{{ $wish->buku->judul_buku }}</h5>
+                                            <p class="card-text">{{ $wish->buku->penulis }}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                         <a href="/wishlist" class="btn btn-primary mt-3">Lainnya</a>
                     </div>
                 </div>
             </div>
-
         </div>
+
+    </div>
     </div>
     <footer class="footer mt-5 py-3 bg-dark text-white">
         <div class="text-center">

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Peminjaman;
 use App\Models\User;
+use App\Models\Wishlist;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -95,9 +97,16 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    public function indexProfile($id) {
+        $peminjaman = Peminjaman::where('user_id', $id)->get();
+        $wishlist = Wishlist::where('user_id', $id)->get();
+        $user = User::find($id);
+        return view('users.profileuser.profileuser', compact('user', 'peminjaman', 'wishlist'));
+    }
 
     // Edit Profile
-    public function updateProfile(Request $request, $id){
+    public function updateProfile(Request $request, $id)
+    {
 
         $request->validate([
             'nama_lengkap' => 'required',

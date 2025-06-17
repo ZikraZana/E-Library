@@ -68,10 +68,11 @@
 
 <body>
     <div class="form-container">
-        <a href="{{ url()->previous() }}" class="btn border-white" style="background-color: #d3d3d3;">
+        <a href="/" class="btn border-white" style="background-color: #d3d3d3;">
             <i style="margin-right: 8px;">←</i>
             <span style="font-size: 16px;">Kembali</span>
-        </a>        @error('tanggal_peminjaman')
+        </a>
+        @error('tanggal_peminjaman')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         @error('tanggal_pengembalian')
@@ -103,6 +104,16 @@
             <button type="submit">Konfirmasi Peminjaman</button>
         </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                title: "Maaf",
+                text: "Buku yang kamu pesan sudah habis",
+                icon: "error"
+            });
+        </script>
+    @endif
 </body>
 
 </html>

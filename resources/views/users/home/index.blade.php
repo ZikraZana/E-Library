@@ -105,7 +105,7 @@
                     👤 {{ Auth::user()->nama_lengkap }}
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownLogin">
-                    <a class="dropdown-item" href="/profileuser">Profil</a>
+                    <a class="dropdown-item" href="{{route('profileuser.indexUser', $id = Auth::user()->id)}}">Profil</a>
                     <a class="dropdown-item" href="/wishlist">Wishlist</a>
                     <a class="dropdown-item" href="/historiuser">Riwayat Peminjaman</a>
                     <form action="/logout" method="POST">
@@ -345,6 +345,17 @@
             Toast.fire({
                 icon: "success",
                 title: "Dihapus dari Wishlist! 🥲"
+            });
+        </script>
+    @endif
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('buku_habis'))
+        <script>
+            Swal.fire({
+                title: "Maaf",
+                text: "Buku yang kamu ingin pinjam sudah habis",
+                icon: "error"
             });
         </script>
     @endif

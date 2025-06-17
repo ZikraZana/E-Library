@@ -54,13 +54,13 @@
 <body>
 
     <div class="container">
+        <div class="col-auto">
+            <a href="/" class="btn border-white" style="background-color: #d3d3d3;">
+                <i style="margin-right: 8px;">←</i>
+                <span style="font-size: 16px;">Kembali</span>
+            </a>
+        </div>
         <div class="row align-items-center mb-4">
-            <div class="col-auto">
-                <a href="/" class="btn border-white" style="background-color: #d3d3d3;">
-                    <i style="margin-right: 8px;">←</i>
-                    <span style="font-size: 16px;">Kembali</span>
-                </a>
-            </div>
 
             <div class="col text-center">
                 <h2 class="fw-bold mb-0">📚 Daftar Buku</h2>
@@ -109,8 +109,9 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-outline-danger">💔 Hapus dari
                                                 Wishlist</button>
+                                        </form>
                                     @endif
-                                    <form action="{{ route('peminjaman.storeUser', $buku->id) }}">
+                                    <form action="{{ route('peminjaman.indexUser', $buku->id) }}">
                                         <button class="btn btn-success" href="/peminjaman">📚 Pinjam Sekarang</button>
                                     </form>
                                 </div>
@@ -127,6 +128,47 @@
             <p class="mb-0">&copy; {{ date('Y') }} E-Library. All rights reserved.</p>
         </div>
     </footer>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('success_wishlist'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "success",
+                title: "Berhasil Menambahkan Wishlist! 🥰"
+            });
+        </script>
+    @endif
+    @if (session('destroy_wishlist'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "success",
+                title: "Dihapus dari Wishlist! 🥲"
+            });
+        </script>
+    @endif
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 

@@ -16,9 +16,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('nama_lengkap');
             $table->string('nomor_hp');
+            $table->string('foto_profil')->default('anonym.png');
             $table->string('password');
-            
-
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

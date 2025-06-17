@@ -217,7 +217,7 @@
 
         <div class="text-center">
 
-            <img src="https://www.asianjunkie.com/wp-content/uploads/2019/10/AhnYujinProduce48.jpg"
+            <img src="{{ asset('storage/' . Auth::user()->foto_profil) }}"
                 class="profile-picture shadow" alt="Profile Picture">
 
 
@@ -246,7 +246,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
 
-                    <form action="{{ route('profileuser.update', $id = Auth::user()->id) }}" method="POST">
+                    <form action="{{ route('profileuser.update', $id = Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="modal-header">
@@ -255,6 +255,36 @@
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
+                            <div class="row justify-content-center">
+
+                                <img src="{{asset('storage/' . Auth::user()->foto_profil)}}" alt="Foto Profil" id="previewImage"
+                                    class="img-fluid rounded-circle mb-3"
+                                    style="width: 200px; height: 180px; object-fit: cover;">
+                                <div class="mt-2 d-flex justify-content-center">
+                                    <label for="profileImage" class="btn btn-warning btn-sm">
+                                        <i class="bi bi-upload"></i> Ganti Foto
+                                    </label>
+                                    <input type="file" id="profileImage" name="foto_profil" accept="image/*"
+                                        style="display: none;" onchange="previewFile()">
+                                </div>
+                                <script>
+                                    function previewFile() {
+                                        var preview = document.getElementById('previewImage');
+                                        var file = document.getElementById('profileImage').files[0];
+                                        var reader = new FileReader();
+
+                                        reader.onloadend = function() {
+                                            preview.src = reader.result;
+                                        }
+
+                                        if (file) {
+                                            reader.readAsDataURL(file);
+                                        } else {
+                                            preview.src = "{{ asset('storage/' . Auth::user()->foto_profil) }}";
+                                        }
+                                    }
+                                </script>
+                            </div>
                             <div class="mb-3">
                                 <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                                 <input type="text" class="form-control @error('nama_lengkap') is-invalid @enderror"
@@ -288,9 +318,6 @@
 
     </div>
     <div class="d-flex justify-content-end mb-3">
-
-
-
         <div class="container-fluid">
             <div class="stats">
                 <div style="width: 300px;">

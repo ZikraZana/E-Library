@@ -53,7 +53,8 @@ class UserController extends Controller
             'email' => $request->email,
             'nama_lengkap' => $request->nama_lengkap,
             'nomor_hp' => $request->nomor_hp,
-            'password' => Hash::make($request->new_password)
+            'password' => Hash::make($request->new_password),
+            'foto_profil' => 'foto_profil/anonym.png'
         ]);
 
         return redirect()->route('loginregister')->with('success', 'Registrasi berhasil! Silakan login.');
@@ -107,11 +108,14 @@ class UserController extends Controller
             'nomor_hp.min' => 'Nomor HP minimal 12 karakter!',
         ]);
 
-        
+        if ($request->hasFile('foto_profil')) {
+            $data['foto_profil'] = $request->file('foto_profil')->store('foto_profil', 'public');
+        }
 
         User::find($id)->update([
             'nama_lengkap' => $request->nama_lengkap,
             'nomor_hp' => $request->nomor_hp,
+            'foto_profil' => $data['foto_profil'] ?? 'foto_profil/anonym.png',
         ]);
 
         return redirect('/profileuser');

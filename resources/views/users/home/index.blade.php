@@ -268,9 +268,10 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger">💔 Hapus dari
                                         Wishlist</button>
+                                </form>
                             @endif
 
-                            <form action="{{ route('peminjaman.indexUser', $buku->id) }}">    
+                            <form action="{{ route('peminjaman.indexUser', $buku->id) }}">
                                 <button class="btn btn-success" href="/peminjaman">📚 Pinjam Sekarang</button>
                             </form>
                         </div>
@@ -305,6 +306,45 @@
             Toast.fire({
                 icon: "success",
                 title: "Berhasil Login!"
+            });
+        </script>
+    @endif
+
+    @if (session('success_wishlist'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "success",
+                title: "Berhasil Menambahkan Wishlist! 🥰"
+            });
+        </script>
+    @endif
+    @if (session('destroy_wishlist'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "success",
+                title: "Dihapus dari Wishlist! 🥲"
             });
         </script>
     @endif

@@ -131,6 +131,7 @@
 
         <form id="form-daftar" style="display: none;" action="{{ route('loginregister.store') }}" method="POST">
             @csrf
+            <input type="hidden" name="foto_profil" value="foto_profil/anonym.png">
             <div class="input-group">
                 <label for="nama-daftar">Nama Lengkap</label>
                 <input type="text" id="nama-daftar" placeholder="Nama lengkap" name="nama_lengkap" />

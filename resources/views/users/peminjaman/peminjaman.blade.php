@@ -68,11 +68,10 @@
 
 <body>
     <div class="form-container">
-        <a href="/" class="btn m-5 border-white" style="background-color: #d3d3d3;">
+        <a href="{{ url()->previous() }}" class="btn border-white" style="background-color: #d3d3d3;">
             <i style="margin-right: 8px;">←</i>
             <span style="font-size: 16px;">Kembali</span>
-        </a>
-        @error('tanggal_peminjaman')
+        </a>        @error('tanggal_peminjaman')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         @error('tanggal_pengembalian')

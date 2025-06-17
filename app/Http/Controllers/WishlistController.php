@@ -22,7 +22,7 @@ class WishlistController extends Controller
     {
         Wishlist::create($request->all());
 
-        return redirect()->back();
+        return redirect()->back()->with('success_wishlist', 'Buku berhasil ditambahkan ke wishlist.');
     }
 
     public function destroy($id)
@@ -30,6 +30,6 @@ class WishlistController extends Controller
         $wishlist = Wishlist::find($id);
         $wishlist->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('destroy_wishlist', 'Buku berhasil dihapus dari wishlist.');
     }
 }

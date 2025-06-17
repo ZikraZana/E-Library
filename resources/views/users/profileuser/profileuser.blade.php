@@ -185,11 +185,9 @@
 <body>
     <div class="header-banner">
         <div style="margin-top: 20px 20px; margin-left: 20px;">
-            <a href="/" style="text-decoration: none;">
-                <button
-                    style="background-color: white; color: #007bff; font-size: 18px; border: none; border-radius: 5px; cursor: pointer;">
-                    <h3>←</h3>
-                </button>
+            <a href="/" class="btn m-5 border-white" style="background-color: #d3d3d3;">
+                <i style="margin-right: 8px;">←</i>
+                <span style="font-size: 16px;">Kembali</span>
             </a>
         </div>
         <div class="settings-dropdown dropdown">

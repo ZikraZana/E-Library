@@ -56,11 +56,9 @@
     <div class="container">
         <div class="row align-items-center mb-4">
             <div class="col-auto">
-                <a href="/" style="text-decoration: none;">
-                    <button
-                        style="background-color: white; color: #007bff; font-size: 24px; border: none; border-radius: 5px; cursor: pointer;">
-                        ←
-                    </button>
+                <a href="/" class="btn border-white" style="background-color: #d3d3d3;">
+                    <i style="margin-right: 8px;">←</i>
+                    <span style="font-size: 16px;">Kembali</span>
                 </a>
             </div>
 

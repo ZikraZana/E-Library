@@ -18,11 +18,11 @@
             padding: 50px;
         }
 
-    .tabs {
-      display: flex;
-      margin-bottom: 20px;
-      justify-content: center;
-    }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
 
         .tabs {
             display: flex;
@@ -82,94 +82,97 @@
 </head>
 
 <body>
-  <main class="py-4">
-    <div class="container">
-      <div class="row align-items-center mb-4">
-        <div class="col-auto">
-          <a href="/" class="btn btn-light">←</a>
+    <main class="py-4">
+        <div class="container">
+            <div class="row align-items-center mb-4">
+                <div class="col-auto">
+                    <a href="/" class="btn border-white" style="background-color: #d3d3d3;">
+                        <i style="margin-right: 8px;">←</i>
+                        <span style="font-size: 16px;">Kembali</span>
+                    </a>
+                </div>
+                <div class="col text-center">
+                    <h2 class="fw-bold mb-0">📚 Riwayat Buku</h2>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <div class="tab active" id="tab-peminjaman">Peminjaman</div>
+                <div class="tab" id="tab-pengembalian">Pengembalian</div>
+            </div>
+
+            {{-- Tabel Peminjaman --}}
+            <div id="peminjaman" class="table-section active">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Judul Buku</th>
+                            <th>Tanggal Peminjaman</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php $no = 1; @endphp
+                        @foreach ($peminjaman->whereIn('status', ['Belum Dipinjam', 'Dipinjam']) as $item)
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $item->buku->judul_buku ?? '-' }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal_peminjaman)->format('d M Y') }}</td>
+                                <td>{{ $item->status }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            {{-- Tabel Pengembalian --}}
+            <div id="pengembalian" class="table-section">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Judul Buku</th>
+                            <th>Tanggal Pengembalian</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php $no = 1; @endphp
+                        @foreach ($peminjaman->where('status', 'Dikembalikan') as $item)
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $item->buku->judul_buku ?? '-' }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal_pengembalian)->format('d M Y') }}</td>
+                                <td>{{ $item->status }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="col text-center">
-          <h2 class="fw-bold mb-0">📚 Riwayat Buku</h2>
-        </div>
-      </div>
 
-      <div class="tabs">
-        <div class="tab active" id="tab-peminjaman">Peminjaman</div>
-        <div class="tab" id="tab-pengembalian">Pengembalian</div>
-      </div>
+        <script>
+            const tabPeminjaman = document.getElementById('tab-peminjaman');
+            const tabPengembalian = document.getElementById('tab-pengembalian');
+            const peminjamanSection = document.getElementById('peminjaman');
+            const pengembalianSection = document.getElementById('pengembalian');
 
-      {{-- Tabel Peminjaman --}}
-      <div id="peminjaman" class="table-section active">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Judul Buku</th>
-              <th>Tanggal Peminjaman</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            @php $no = 1; @endphp
-            @foreach ($peminjaman->whereIn('status', ['Belum Dipinjam', 'Dipinjam']) as $item)
-              <tr>
-                <td>{{ $no++ }}</td>
-                <td>{{ $item->buku->judul_buku ?? '-' }}</td>
-                <td>{{ \Carbon\Carbon::parse($item->tanggal_peminjaman)->format('d M Y') }}</td>
-                <td>{{$item->status}}</td>
-              </tr>
-            @endforeach
-          </tbody>
-        </table>
-      </div>
+            tabPeminjaman.addEventListener('click', () => {
+                tabPeminjaman.classList.add('active');
+                tabPengembalian.classList.remove('active');
+                peminjamanSection.classList.add('active');
+                pengembalianSection.classList.remove('active');
+            });
 
-      {{-- Tabel Pengembalian --}}
-      <div id="pengembalian" class="table-section">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Judul Buku</th>
-              <th>Tanggal Pengembalian</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            @php $no = 1; @endphp
-            @foreach ($peminjaman->where('status', 'Dikembalikan') as $item)
-              <tr>
-                <td>{{ $no++ }}</td>
-                <td>{{ $item->buku->judul_buku ?? '-' }}</td>
-                <td>{{ \Carbon\Carbon::parse($item->tanggal_pengembalian)->format('d M Y') }}</td>
-                <td>{{$item->status}}</td>
-              </tr>
-            @endforeach
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <script>
-      const tabPeminjaman = document.getElementById('tab-peminjaman');
-      const tabPengembalian = document.getElementById('tab-pengembalian');
-      const peminjamanSection = document.getElementById('peminjaman');
-      const pengembalianSection = document.getElementById('pengembalian');
-
-      tabPeminjaman.addEventListener('click', () => {
-        tabPeminjaman.classList.add('active');
-        tabPengembalian.classList.remove('active');
-        peminjamanSection.classList.add('active');
-        pengembalianSection.classList.remove('active');
-      });
-
-      tabPengembalian.addEventListener('click', () => {
-        tabPengembalian.classList.add('active');
-        tabPeminjaman.classList.remove('active');
-        pengembalianSection.classList.add('active');
-        peminjamanSection.classList.remove('active');
-      });
-    </script>
-  </main>
+            tabPengembalian.addEventListener('click', () => {
+                tabPengembalian.classList.add('active');
+                tabPeminjaman.classList.remove('active');
+                pengembalianSection.classList.add('active');
+                peminjamanSection.classList.remove('active');
+            });
+        </script>
+    </main>
 </body>
 
 </html>

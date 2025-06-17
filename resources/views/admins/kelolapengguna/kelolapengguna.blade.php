@@ -1,15 +1,12 @@
 @extends('admins.layouts.layout')
 
 @section('content')
-    <div style="margin: 10px 0 20px 10px;">
-        <a href="/admin/dashboard" style="text-decoration: none;">
-            <button
-                style="background-color: white; color: #007bff; font-size: 18px; border: none; border-radius: 5px; cursor: pointer;">
-                <h3>←</h3>
-            </button>
-        </a>
-    </div>
+
     <div class="container mt-5">
+        <a href="/admin/dashboard" class="btn border-white" style="background-color: #d3d3d3;">
+            <i style="margin-right: 8px;">←</i>
+            <span style="font-size: 16px;">Kembali</span>
+        </a>
         <h2 class="text-center mb-4">📘 Kelola Pengguna</h2>
 
         <!-- Tabel Pengguna -->

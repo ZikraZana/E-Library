@@ -1,15 +1,11 @@
 @extends('admins.layouts.layout')
 
 @section('content')
-    <div style="margin: 10px 0 20px 20px;">
-        <a href="/admin/dashboard" style="text-decoration: none;">
-            <button
-                style="background-color: white; color: #007bff; font-size: 18px; border: none; border-radius: 5px; cursor: pointer;">
-                <h3>←</h3>
-            </button>
-        </a>
-    </div>
     <div class="container mt-5 mb-5">
+        <a href="/admin/dashboard" class="btn border-white" style="background-color: #d3d3d3;">
+            <i style="margin-right: 8px;">←</i>
+            <span style="font-size: 16px;">Kembali</span>
+        </a>
         <h2 class="text-center mb-4">📚 Kelola Daftar Buku</h2>
 
         <div class="mb-3 text-end">
@@ -297,5 +293,5 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    
+
 @endsection

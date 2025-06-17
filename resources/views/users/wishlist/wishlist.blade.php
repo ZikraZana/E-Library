@@ -13,11 +13,9 @@
 <body>
     <div class="container py-5">
         <div style="margin-top: 20px 20px; margin-left: 20px;">
-            <a href="/" style="text-decoration: none;">
-                <button
-                    style="background-color: white; color: #007bff; font-size: 18px; border: none; border-radius: 5px; cursor: pointer;">
-                    <h3>←</h3>
-                </button>
+            <a href="/" class="btn border-white" style="background-color: #d3d3d3;">
+                <i style="margin-right: 8px;">←</i>
+                <span style="font-size: 16px;">Kembali</span>
             </a>
         </div>
         <h2 class="text-center mb-4">❤️ My Wishlist</h2>
@@ -72,14 +70,14 @@
                     </div>
                 </div>
             @endforeach
-            
+
     </div>
     <footer class="footer fixed-bottom py-3 bg-dark text-white">
         <div class="text-center">
             <p class="mb-0">&copy; {{ date('Y') }} E-Library. All rights reserved.</p>
         </div>
     </footer>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

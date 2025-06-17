@@ -97,11 +97,18 @@ class DaftarBukuController extends Controller
     public function destroy($id)
     {
         $buku = DaftarBuku::findOrFail($id);
+
+        // Cek apakah buku masih memiliki relasi dengan peminjaman
+        if ($buku->peminjaman()->exists()) {
+            return redirect()->route('admins.kelolabuku.index')
+                ->with('error', '❗ Buku tidak bisa dihapus karena masih memiliki riwayat peminjaman.');
+        }
+
         $buku->delete();
 
-        return redirect()->route('admins.kelolabuku.index')->with('success', 'Buku berhasil dihapus.');
+        return redirect()->route('admins.kelolabuku.index')
+            ->with('success', '✅ Buku berhasil dihapus.');
     }
-
 
     //Menampilkan card buku untuk user dan guest
     public function tampilDataBukuDaftarBuku()

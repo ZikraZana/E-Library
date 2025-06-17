@@ -28,9 +28,14 @@
         </form>
     </nav>
 
-    <div class="container mt-4">
+    <div class="container mt-4" style="min-height: calc(100vh - 160px);">
         @yield('content')
     </div>
+    <footer class="footer py-3 bg-dark text-white fixed-bottom">
+        <div class="text-center">
+            <p class="mb-0">&copy; {{ date('Y') }} E-Library. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>

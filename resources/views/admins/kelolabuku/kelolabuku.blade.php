@@ -9,7 +9,7 @@
             </button>
         </a>
     </div>
-    <div class="container mt-5">
+    <div class="container mt-5 mb-5">
         <h2 class="text-center mb-4">📚 Kelola Daftar Buku</h2>
 
         <div class="mb-3 text-end">
@@ -124,8 +124,9 @@
                             <td>{{ $item->penerbit }}</td>
                             <td>{{ $item->jumlah_buku }}</td>
                             <td>{{ $item->kategori }}</td>
-                            <td class="d-flex justify-content-center"><img id="modalBookImg" src="{{ asset('storage/' . $item->cover_buku) }}"
-                                    class="img-fluid mb-3" style="max-height: 250px;"></td>
+                            <td class="d-flex justify-content-center"><img id="modalBookImg"
+                                    src="{{ asset('storage/' . $item->cover_buku) }}" class="img-fluid mb-3"
+                                    style="max-height: 250px;"></td>
                             <td>
                                 <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#modaledit{{ $item->id }}">Edit</button>
@@ -289,10 +290,12 @@
         </table>
     </div>
 
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    
 @endsection

@@ -183,90 +183,92 @@
 
 <body>
 
-    <body>
-        <div class="header-banner">
-            <div style="margin-top: 20px 20px; margin-left: 20px;">
-                <a href="/admin/dashboard" style="text-decoration: none;">
-                <button style="background-color: white; color: #007bff; font-size: 18px; border: none; border-radius: 5px; cursor: pointer;">
+    <div class="header-banner">
+        <div style="margin-top: 20px 20px; margin-left: 20px;">
+            <a href="/admin/dashboard" style="text-decoration: none;">
+                <button
+                    style="background-color: white; color: #007bff; font-size: 18px; border: none; border-radius: 5px; cursor: pointer;">
                     <h3>←</h3>
                 </button>
-                </a>
-            </div>
-            <div class="settings-dropdown dropdown">
-                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Settings
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#">Tentang Akun</a></li>
-                    <li><a class="dropdown-item" href="#">Pengaturan Privasi</a></li>
-                    <li><a class="dropdown-item" href="#">Keamanan</a></li>
-                    <li><a class="dropdown-item" href="#">Pesan</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <form action="/logout/admin" method="POST">
-                            @csrf
-                            <button type="submit" class="dropdown-item text-danger">Log Out</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
+            </a>
         </div>
-
-        <div class="container text-center mt-5">
-
-            <img src="https://cdn.antaranews.com/cache/1200x800/2022/03/17/IMG_20220317_101822_292.jpg"
-                class="profile-picture shadow" alt="Profile Picture">
-            <h4 class="mt-2 mb-0 fw-bold">{{ Auth::guard('admin')->user()->name }}<span class="badge-pro">Adm</span>
-                </h3>
-
-                <i class="bi bi-pencil-square ms-2 text-muted" style="cursor:pointer;" title="Edit"></i>
-            </h4>
-            <p class="text-muted">{{ Auth::guard('admin')->user()->email }}</p>
+        <div class="settings-dropdown dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Settings
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Tentang Akun</a></li>
+                <li><a class="dropdown-item" href="#">Pengaturan Privasi</a></li>
+                <li><a class="dropdown-item" href="#">Keamanan</a></li>
+                <li><a class="dropdown-item" href="#">Pesan</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li>
+                    <form action="/logout/admin" method="POST">
+                        @csrf
+                        <button type="submit" class="dropdown-item text-danger">Log Out</button>
+                    </form>
+                </li>
+            </ul>
         </div>
-        <div class="d-flex justify-content-end mb-3">
+    </div>
 
-            <div class="container mt-5">
-                <div class="row justify-content-center">
+    <div class="container text-center mt-5">
+
+        <img src="https://cdn.antaranews.com/cache/1200x800/2022/03/17/IMG_20220317_101822_292.jpg"
+            class="profile-picture shadow" alt="Profile Picture">
+        <h4 class="mt-2 mb-0 fw-bold">{{ Auth::guard('admin')->user()->name }}<span class="badge-pro">Adm</span>
+            </h3>
+
+            <i class="bi bi-pencil-square ms-2 text-muted" style="cursor:pointer;" title="Edit"></i>
+        </h4>
+        <p class="text-muted">{{ Auth::guard('admin')->user()->email }}</p>
+    </div>
+    <div class="d-flex justify-content-end mb-3">
+
+        <div class="container mt-5">
+            <div class="row justify-content-center">
 
 
-                    <div class="col-md-5 mb-4">
-                        <div class="card shadow-sm rounded-4">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Kelola Peminjaman Buku</h5>
-                                <p class="card-text">Pantau dan atur proses peminjaman buku oleh pengguna.</p>
-                                <a href="/admin/kelolapinjam" class="btn btn-primary">Lihat Detail</a>
-                            </div>
+                <div class="col-md-5 mb-4">
+                    <div class="card shadow-sm rounded-4">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Kelola Peminjaman Buku</h5>
+                            <p class="card-text">Pantau dan atur proses peminjaman buku oleh pengguna.</p>
+                            <a href="/admin/kelolapinjam" class="btn btn-primary">Lihat Detail</a>
                         </div>
                     </div>
+                </div>
 
 
-                    <div class="col-md-5 mb-4">
-                        <div class="card shadow-sm rounded-4">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Kelola Daftar Buku</h5>
-                                <p class="card-text">Tambahkan, ubah, atau hapus koleksi buku pada e-library.</p>
-                                <a href="/admin/kelolabuku" class="btn btn-success">Lihat Detail</a>
-                            </div>
+                <div class="col-md-5 mb-4">
+                    <div class="card shadow-sm rounded-4">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Kelola Daftar Buku</h5>
+                            <p class="card-text">Tambahkan, ubah, atau hapus koleksi buku pada e-library.</p>
+                            <a href="/admin/kelolabuku" class="btn btn-success">Lihat Detail</a>
                         </div>
                     </div>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
+        </div>
+    </div>
+    <footer class="footer py-3 bg-dark text-white fixed-bottom">
+        <div class="text-center">
+            <p class="mb-0">&copy; {{ date('Y') }} E-Library. All rights reserved.</p>
+        </div>
+    </footer>
 
 
 
 
 
-            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 
 </html>

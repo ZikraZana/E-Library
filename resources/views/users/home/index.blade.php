@@ -278,6 +278,15 @@
             </div>
         @endforeach
     </div>
+    <footer class="footer mt-5 py-3 bg-dark text-white">
+        <div class="container">
+            <div class="text-center">
+                <p class="mb-0">&copy; {{ date('Y') }} E-Library. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if (session('success'))
         <script>
@@ -298,7 +307,7 @@
             });
         </script>
     @endif
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>

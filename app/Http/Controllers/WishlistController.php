@@ -6,12 +6,13 @@ use App\Models\User;
 use App\Models\Wishlist;
 use App\Models\DaftarBuku;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WishlistController extends Controller
 {
     public function index()
     {
-        $wishlist = Wishlist::with('user', 'buku')->get();
+        $wishlist = Wishlist::with('user', 'buku')->where('user_id', Auth::id())->get();
         $pengguna = User::all();
         $buku = DaftarBuku::all();
         return view('users.wishlist.wishlist', compact('wishlist', 'pengguna', 'buku'));
@@ -20,7 +21,7 @@ class WishlistController extends Controller
     public function store(Request $request)
     {
         Wishlist::create($request->all());
-        
+
         return redirect()->back();
     }
 

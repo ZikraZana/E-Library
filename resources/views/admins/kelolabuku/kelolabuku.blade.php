@@ -110,6 +110,7 @@
                     <th>Penerbit</th>
                     <th>Jumlah Buku</th>
                     <th>Kategori</th>
+                    <th>Cover Buku</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -123,6 +124,8 @@
                             <td>{{ $item->penerbit }}</td>
                             <td>{{ $item->jumlah_buku }}</td>
                             <td>{{ $item->kategori }}</td>
+                            <td class="d-flex justify-content-center"><img id="modalBookImg" src="{{ asset('storage/' . $item->cover_buku) }}"
+                                    class="img-fluid mb-3" style="max-height: 250px;"></td>
                             <td>
                                 <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#modaledit{{ $item->id }}">Edit</button>

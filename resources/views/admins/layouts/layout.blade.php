@@ -28,7 +28,7 @@
         </form>
     </nav>
 
-    <div class="container mt-4" style="min-height: calc(100vh - 160px);">
+    <div class="container mt-4 mb-5" style="min-height: calc(100vh - 160px);">
         @yield('content')
     </div>
     <footer class="footer py-3 bg-dark text-white fixed-bottom">

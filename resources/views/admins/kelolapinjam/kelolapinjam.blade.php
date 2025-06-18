@@ -3,7 +3,7 @@
 @section('content')
 
 
-    <div class="container mt-5">
+    <div class="container mt-5" style="margin-bottom: 150px">
         <a href="/admin/dashboard" class="btn border-white" style="background-color: #d3d3d3;">
             <i style="margin-right: 8px;">←</i>
             <span style="font-size: 16px;">Kembali</span>
@@ -75,7 +75,7 @@
         </div>
 
         {{-- Tabel Peminjaman --}}
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped mb-5">
             <thead class="table-primary">
                 <tr>
                     <th>No</th>

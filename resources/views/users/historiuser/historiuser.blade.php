@@ -114,7 +114,7 @@
                     </thead>
                     <tbody>
                         @php $no = 1; @endphp
-                        @foreach ($peminjaman->whereIn('status', ['Belum Dipinjam', 'Dipinjam']) as $item)
+                        @foreach ($peminjaman->whereIn('status', ['Belum Dipinjam', 'Dipinjam'])->where('user_id', auth()->user()->id) as $item)
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $item->buku->judul_buku ?? '-' }}</td>
@@ -139,7 +139,7 @@
                     </thead>
                     <tbody>
                         @php $no = 1; @endphp
-                        @foreach ($peminjaman->where('status', 'Dikembalikan') as $item)
+                        @foreach ($peminjaman->where('status', 'Dikembalikan')->where('user_id', auth()->user()->id) as $item)
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $item->buku->judul_buku ?? '-' }}</td>

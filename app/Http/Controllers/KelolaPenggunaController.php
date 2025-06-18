@@ -34,11 +34,24 @@ class KelolaPenggunaController extends Controller
 
     public function destroy($id)
     {
-        $pengguna = User::findOrFail($id);
-        $pengguna->delete();
+        try {
+            $pengguna = User::findOrFail($id);
+            $pengguna->delete();
 
-        return redirect()->route('kelolapengguna.index')->with('success', 'Pengguna berhasil dihapus.');
+            return redirect()->route('kelolapengguna.index')
+                ->with('success', 'Pengguna berhasil dihapus.');
+        } catch (\Illuminate\Database\QueryException $e) {
+            if ($e->getCode() === '23000') {
+                // Foreign key constraint violation
+                return redirect()->route('kelolapengguna.index')
+                    ->with('error', 'Pengguna tidak dapat dihapus karena memiliki data terkait.');
+            }
+
+            return redirect()->route('kelolapengguna.index')
+                ->with('error', 'Terjadi kesalahan saat menghapus pengguna.');
+        }
     }
+
 
     // Jika tidak digunakan, bisa dikosongkan
     public function show($id) {}

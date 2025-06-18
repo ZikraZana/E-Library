@@ -133,6 +133,16 @@ class PeminjamanController extends Controller
         $peminjaman->status = $request->status;
         $peminjaman->save();
 
+        if ($peminjaman->status === 'Diterima') {
+            $buku = DaftarBuku::findOrFail($peminjaman->buku_id);
+            $buku->jumlah_buku -= 1;
+            $buku->save();
+        } elseif ($peminjaman->status === 'Ditolak') {
+            $buku = DaftarBuku::findOrFail($peminjaman->buku_id);
+            $buku->jumlah_buku += 1;
+            $buku->save();
+        }
+
         return redirect()->route('admins.kelolapinjam.index')->with('success', 'Data peminjaman berhasil diperbarui.');
     }
 

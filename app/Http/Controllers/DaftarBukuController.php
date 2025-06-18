@@ -101,7 +101,7 @@ class DaftarBukuController extends Controller
         // Cek apakah buku masih memiliki relasi dengan peminjaman
         if ($buku->peminjaman()->exists()) {
             return redirect()->route('admins.kelolabuku.index')
-                ->with('error', '❗ Buku tidak bisa dihapus karena masih memiliki riwayat peminjaman.');
+                ->with('error_hapus', '❗ Buku tidak bisa dihapus karena masih memiliki riwayat peminjaman.');
         }
 
         $buku->delete();

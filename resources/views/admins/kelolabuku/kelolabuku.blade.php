@@ -285,7 +285,16 @@
             </tbody>
         </table>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('error_hapus'))
+        <script>
+            Swal.fire({
+                title: "Peringatan",
+                text: "Buku ini tidak dapat dihapus karena masih ada peminjaman yang terkait.",
+                icon: "warning"
+            });
+        </script>
+    @endif
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">

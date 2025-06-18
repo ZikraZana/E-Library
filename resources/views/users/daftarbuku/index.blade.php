@@ -120,16 +120,24 @@
                     </div>
                 @endforeach
             </div>
+
+            @if ($daftarbuku->isEmpty() && !request('search') && !request('kategori'))
+                <div class="col-12 text-center">
+                    <p class="text-muted">Buku tidak tersedia karena admin belum memasukkan daftar buku</p>
+                </div>
+            @endif
         </div>
     </div>
 
-    <footer class="footer mt-5 py-3 bg-dark text-white">
-        <div class="text-center">
-            <p class="mb-0">&copy; {{ date('Y') }} E-Library. All rights reserved.</p>
+    <footer class="footer fixed-bottom mt-5 py-3 bg-dark text-white">
+        <div class="container">
+            <div class="text-center">
+                <p class="mb-0">&copy; {{ date('Y') }} E-Library. All rights reserved.</p>
+            </div>
         </div>
     </footer>
-    
-    
+
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if (session('success_wishlist'))
         <script>

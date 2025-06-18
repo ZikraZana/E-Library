@@ -220,7 +220,7 @@
             <p>Tidak ditemukan buku dengan kategori tersebut.</p>
         @endif
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
-            @forelse ($daftarbuku->take(6) as $buku)
+            @foreach ($daftarbuku->take(6) as $buku)
                 <div class="col">
                     <div class="card" data-bs-toggle="modal" data-bs-target="#bookModal{{ $buku->id }}"
                         data-title="{{ $buku->judul_buku }}" data-img="{{ asset('storage/' . $buku->cover_buku) }}"
@@ -232,14 +232,13 @@
                         </div>
                     </div>
                 </div>
-                @empty
-                    @if(request($daftarbuku->isEmpty()))
-                        <div class="col-12 text-center">
-                            <p class="text-muted">Buku tidak tersedia karena admin belum memasukkan daftar buku</p>
-                        </div>
-                    @endif
-                @endforelse
+            @endforeach
+        </div>
+        @if ($daftarbuku->isEmpty() && !request('search') && !request('kategori'))
+            <div class="col-12 text-center">
+                <p class="text-muted">Buku tidak tersedia karena admin belum memasukkan daftar buku</p>
             </div>
+        @endif
 
         @foreach ($daftarbuku->take(6) as $buku)
             <div class="modal fade" id="bookModal{{ $buku->id }}" tabindex="-1"
@@ -285,7 +284,8 @@
                     </div>
                 </div>
             </div>
-        @endforeach    </div>
+        @endforeach
+    </div>
     <footer class="footer fixed-bottom mt-5 py-3 bg-dark text-white">
         <div class="container">
             <div class="text-center">
